@@ -16,7 +16,7 @@ public class CustomToolbarActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.uppertoolbar);
         setSupportActionBar(toolbar);
 
         //toolbar.getId();
