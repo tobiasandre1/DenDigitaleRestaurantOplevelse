@@ -16,7 +16,7 @@ public class MainActivity extends CustomToolbarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.shoppingcart).setOnClickListener(new ToolbarActions(this));
+        super.addClickListeners();
 
     }
 
