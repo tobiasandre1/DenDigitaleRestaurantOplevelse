@@ -8,14 +8,5 @@
 
     <include layout="@layout/toolbar"></include>
 
-    <fragment
-        android:id="@+id/fragment_place"
-        android:name="android.app.ListFragment"
-        android:layout_width="383dp"
-        android:layout_height="468dp"
-        android:layout_x="0dp"
-        android:layout_y="97dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="96dp" />
 
 </AbsoluteLayout>
