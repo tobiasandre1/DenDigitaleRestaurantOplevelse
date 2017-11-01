@@ -19,6 +19,10 @@ public class CustomToolbarActivity extends AppCompatActivity{
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
+        //toolbar.getId();
+
+        //this.toolbar.setOnClickListener(new ToolbarActions());
+
     }
 
 }
