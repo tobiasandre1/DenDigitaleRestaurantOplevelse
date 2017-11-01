@@ -18,7 +18,7 @@ public class MainActivity extends CustomToolbarActivity{
     public void SkiftFrag(View view){
         Fragment fragment;
         if ( view == findViewById(R.id.shoppingcart)) {
-            fragment = new Indkoebskurv_frag();
+            fragment = new ShoppingCart();
             FragmentManager fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.fragment_place, fragment);

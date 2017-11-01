@@ -1,7 +1,7 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 
-public class Madinfo_frag extends Fragment {
+public class ShoppingCart extends Fragment {
 
     private TextView tekst;
 
@@ -23,5 +23,6 @@ public class Madinfo_frag extends Fragment {
         tableLayout.addView(tekst);
         return tableLayout;
     }
+
 
 }
