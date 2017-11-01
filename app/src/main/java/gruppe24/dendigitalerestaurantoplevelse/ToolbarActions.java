@@ -23,10 +23,9 @@ public class ToolbarActions implements View.OnClickListener{
         if(v.getId() == ((Activity) context).findViewById(R.id.shoppingcart).getId()){
             ((Activity)context).startActivity(new Intent((Activity)context, ShoppingCart.class));
         }
-        /*
-        switch(v.getId()){
-            case ((Activity)context).findViewById(R.id.menu).getId():
-        }*/
+        else if(v.getId() == ((Activity) context).findViewById(R.id.home).getId()){
+            ((Activity)context).startActivity(new Intent((Activity)context, MainActivity.class));
+        }
     }
 
     public void update(){
