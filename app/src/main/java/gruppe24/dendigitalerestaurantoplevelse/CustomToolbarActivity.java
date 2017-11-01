@@ -21,7 +21,7 @@ public class CustomToolbarActivity extends AppCompatActivity{
 
         //toolbar.getId();
 
-        //this.toolbar.setOnClickListener(new ToolbarActions());
+        //findViewById(R.id.shoppingcart).setOnClickListener(new ToolbarActions(this.getApplicationContext()));
 
     }
 

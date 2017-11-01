@@ -14,7 +14,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <android.support.v7.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/menu"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -27,12 +27,11 @@
             android:layout_height="fill_parent"
             android:drawableRight="@drawable/ic_shopping_cart"
             android:gravity="center_vertical|right"
-            android:onClick="SkiftFrag"
             android:text="0 kr,-"
 
             />
 
-        <android.support.v7.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

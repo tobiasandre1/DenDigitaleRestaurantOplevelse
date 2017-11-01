@@ -11,20 +11,16 @@ import android.view.View;
 
 public class ToolbarActions implements View.OnClickListener{
 
-    private Context context;
+    private static Context context;
 
     public ToolbarActions(Context context){
         this.context = context;
     }
 
-    public ToolbarActions(){
-
-    }
-
     public void onClick(View v){
 
-        /*
-        if(v.getId() == ((Activity)context).findViewById(R.id.shoppingcart).getId()){
+        System.out.println("Inclick");
+        if(v.getId() == ((Activity) context).findViewById(R.id.shoppingcart).getId()){
             ((Activity)context).startActivity(new Intent((Activity)context, ShoppingCart.class));
         }
         /*
