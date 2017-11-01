@@ -9,19 +9,13 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 
-public class FoodInfo extends Fragment {
-
-    private TextView tekst;
+public class FoodInfo extends CustomToolbarActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_food_info);
 
-        TableLayout tableLayout = new TableLayout(getActivity());
-
-        tekst = new TextView(getActivity());
-        tekst.setText("Her bliver vist et fragment");
-        tableLayout.addView(tekst);
-        return tableLayout;
     }
 
 }

@@ -15,6 +15,8 @@ public class MainActivity extends CustomToolbarActivity{
         setContentView(R.layout.activity_main);
 
     }
+
+    /*
     public void SkiftFrag(View view){
         Fragment fragment;
         if ( view == findViewById(R.id.shoppingcart)) {
@@ -32,6 +34,7 @@ public class MainActivity extends CustomToolbarActivity{
             ft.replace(R.id.fragment_placering, fragment);
             ft.commit();
         }
-        */
+
     }
+    */
 }
