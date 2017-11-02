@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -25,13 +26,16 @@ public class ShoppingCart extends CustomToolbarActivity {
 
         FoodsInformation info = new FoodInformationArrayList();
 
-        /*
+
         String[] names = new String[2];
         names[0] = "Salmon";
         names[1] = "Spice";
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_shopping_cart,names);
-        */
+        ArrayAdapter adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, names);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
+
     }
 
 
