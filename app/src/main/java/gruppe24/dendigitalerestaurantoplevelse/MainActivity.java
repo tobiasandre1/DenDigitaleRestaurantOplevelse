@@ -19,7 +19,10 @@ public class MainActivity extends CustomToolbarActivity{
         super.addClickListeners();
 
     }
-
+    public void btnSushi_OnClick(View view) {
+        Intent intent = new Intent(this,FoodInfo.class);
+        startActivity(intent);
+    }
     /*
     public void SkiftFrag(View view){
         Fragment fragment;
