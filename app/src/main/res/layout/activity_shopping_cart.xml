@@ -12,8 +12,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="0dp"></include>
+        android:layout_width="wrap_content"></include>
 
     <!--
     <TextView
@@ -28,20 +27,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="71dp" />-->
-<!--
+
     <ListView
         android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="444dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toTopOf="@+id/lowertoolbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
-        app:layout_constraintVertical_bias="0.666"></ListView>-->
+        app:layout_constraintVertical_bias="0.666"></ListView>
 
 
 
