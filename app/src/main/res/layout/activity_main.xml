@@ -29,7 +29,7 @@
 
         <Button
             android:id="@+id/home"
-            android:layout_width="119dp"
+            android:layout_width="100dp"
             android:layout_height="fill_parent"
             android:gravity="center_vertical|right"
             android:text="Home"
@@ -37,7 +37,7 @@
 
         <Button
             android:id="@+id/menu"
-            android:layout_width="119dp"
+            android:layout_width="100dp"
             android:layout_height="fill_parent"
             android:gravity="center_vertical|right"
             android:text="Menu"
@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/personal"
-            android:layout_width="119dp"
+            android:layout_width="100dp"
             android:layout_height="fill_parent"
             android:gravity="center_vertical|right"
             android:text="Personal"
