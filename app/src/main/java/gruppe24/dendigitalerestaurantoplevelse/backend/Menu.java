@@ -6,9 +6,10 @@ import java.util.List;
  * Created by Tobias on 02-11-2017.
  */
 
-public interface FoodsInformation {
+public interface Menu {
 
-    public FoodItem getFoodItem(CharSequence name);
+    public Dish getDish(CharSequence name);
 
-    public List<FoodItem> getFoodItems();
+    public List<Dish> getDishes();
+
 }
