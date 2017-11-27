@@ -20,11 +20,23 @@ public class FoodInfo extends CustomToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_info);
 
+        super.addClickListeners();
+
+        //Dummy data
+        Dish dish = new Dish("Sushi", 14.95, R.drawable.test, "Dette er en ret"); //Instead of initializing the variable here, we can get data from the activity that starts FoodInfo
+        insertDish(dish);
+
+
+    }
+
+    public void insertDish(Dish dish){
         ImageView image = (ImageView) findViewById(R.id.imageView5);
+        TextView title = (TextView) findViewById(R.id.dishName);
+        TextView description = (TextView) findViewById(R.id.dishDesc);
 
-        Dish sushi = new Dish("Sushi", 14.95, R.drawable.test, "Dette er en ret");
-
-        image.setImageResource(sushi.getImage());
+        image.setImageResource(dish.getImage());
+        title.setText(dish.getName());
+        description.setText(dish.getDescription());
 
     }
 

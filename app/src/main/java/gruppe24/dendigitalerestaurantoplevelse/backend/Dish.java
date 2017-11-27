@@ -9,15 +9,17 @@ public class Dish {
     private CharSequence name;
     private double price;
     private int image; //TODO get this to refer to an image
-    private String description;
+    private CharSequence description;
 
 
-    public Dish(CharSequence name, double price, int image, String description){
+    public Dish(CharSequence name, double price, int image, CharSequence description){
         this.name = name;
         this.price = price;
         this.image = image;
         this.description = description;
     }
+
+    //Getters and setters
 
     public CharSequence getName() {
         return name;
@@ -41,5 +43,13 @@ public class Dish {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public CharSequence getDescription() {
+        return description;
+    }
+
+    public void setDescription(CharSequence description) {
+        this.description = description;
     }
 }
