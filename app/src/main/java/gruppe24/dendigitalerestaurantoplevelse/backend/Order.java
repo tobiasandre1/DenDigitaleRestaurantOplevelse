@@ -7,5 +7,6 @@ package gruppe24.dendigitalerestaurantoplevelse.backend;
 public interface Order {
     public void add(Dish dish);
     public OrderItem get(CharSequence name);
+    public double getTotalPrice();
 
 }

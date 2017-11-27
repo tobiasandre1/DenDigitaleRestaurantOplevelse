@@ -34,4 +34,12 @@ public class OrderArrayList implements Order {
         }
         return null;
     }
+
+    public double getTotalPrice(){
+        double result = 0;
+        for(OrderItem i : orderItems){
+            result += i.getDish().getPrice()*i.getAmount();
+        }
+        return result;
+    }
 }

@@ -6,6 +6,9 @@ package gruppe24.dendigitalerestaurantoplevelse.backend;
 
 public class User {
 
-    OrderArrayList ShoppingCart;
+    Order shoppingCart;
 
+    public User(){
+        shoppingCart = new OrderArrayList();
+    }
 }

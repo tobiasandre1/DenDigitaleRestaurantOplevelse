@@ -23,7 +23,7 @@ public class FoodInfo extends CustomToolbarActivity {
         super.addClickListeners();
 
         //Dummy data
-        Dish dish = new Dish("Sushi", 14.95, R.drawable.test, "Dette er en ret"); //Instead of initializing the variable here, we can get data from the activity that starts FoodInfo
+        Dish dish = super.backend.getMenu().getDish("Sashimi laks");
         insertDish(dish);
 
 
