@@ -1,5 +1,8 @@
 package gruppe24.dendigitalerestaurantoplevelse.backend;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +10,7 @@ import java.util.List;
  * Created by Tobias on 02-11-2017.
  */
 
-public class Dish {
+public class Dish{
 
     private CharSequence name;
     private CharSequence priceText;
@@ -70,4 +73,7 @@ public class Dish {
     }
 
     public CharSequence getPriceText(){  return price + "kr,- " + priceText; }
+
+
+
 }

@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
+
 public class MainActivity extends CustomToolbarActivity{
 
 
@@ -19,8 +21,15 @@ public class MainActivity extends CustomToolbarActivity{
         super.addClickListeners();
 
     }
+
     public void btnSushi_OnClick(View view) {
+        startFoodInfoActivity("Sashimi laks"); //TODO Replace "Sashimi laks" with data from buttons in arrayadapter
+    }
+
+    public void startFoodInfoActivity(CharSequence food){
         Intent intent = new Intent(this,FoodInfo.class);
+        Dish dish = super.backend.getMenu().getDish(food);
+        intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);
     }
     /*

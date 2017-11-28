@@ -22,8 +22,11 @@ public class FoodInfo extends CustomToolbarActivity {
 
         super.addClickListeners();
 
-        //Dummy data
-        Dish dish = super.backend.getMenu().getDish("Sashimi laks");
+        //Insert data into layout
+        Bundle data = getIntent().getExtras();
+        CharSequence foodInfoDishName = data.getString("Food");
+        if(foodInfoDishName == null){System.out.println("Oi you dumb basterd, null");}
+        Dish dish = super.backend.getMenu().getDish(foodInfoDishName);
         insertDish(dish);
 
 
