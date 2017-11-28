@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gruppe24.dendigitalerestaurantoplevelse.MainActivity"
     tools:layout_editor_absoluteY="25dp"
-    tools:layout_editor_absoluteX="0dp">
-
+    tools:layout_editor_absoluteX="0dp"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <include
-        layout="@layout/toolbar"
         android:id="@+id/include"
-        android:layout_width="0dp"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp"></include>
-
-    // using a custom toolbar from https://github.com/roughike/BottomBar, due to the inbuilt libary to constrained
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        app:bb_tabXmlResource="@xml/items"
-        app:bb_behavior="underNavbar"
+        android:layout_alignEnd="@+id/frag_place"
+        android:layout_alignParentStart="true"
         tools:layout_editor_absoluteX="0dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:layout_editor_absoluteY="4dp"></include>
+
+    // using a custom toolbar from https://github.com/roughike/BottomBar, due to the inbuilt libary
+    to constrained
 
     <fragment
         android:id="@+id/frag_place"
         android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.frag_temporary"
-        android:layout_width="320dp"
-        android:layout_height="419dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.436"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="78dp"
-        tools:layout_editor_absoluteX="64dp"
-        app:layout_constraintHorizontal_bias="1.0" />
+        android:layout_width="match_parent"
+        android:layout_height="377dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="300dp"
+        android:layout_weight="1.01" />
+
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        app:bb_behavior="underNavbar"
+        app:bb_tabXmlResource="@xml/items"
+        tools:layout_editor_absoluteX="573dp"
+        tools:layout_editor_absoluteY="587dp" />
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
