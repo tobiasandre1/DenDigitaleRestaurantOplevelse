@@ -16,4 +16,22 @@ public class User {
         shoppingCart = new OrderArrayList();
         favorites = new ArrayList<>();
     }
+
+    ///Getters and setters
+
+    public Order getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(Order shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public List<CharSequence> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<CharSequence> favorites) {
+        this.favorites = favorites;
+    }
 }
