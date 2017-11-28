@@ -10,5 +10,6 @@ public interface Order {
     public void remove(Dish dish);
     public OrderItem get(CharSequence name);
     public double getTotalPrice();
+    public CharSequence getTotalPriceAsText();
 
 }

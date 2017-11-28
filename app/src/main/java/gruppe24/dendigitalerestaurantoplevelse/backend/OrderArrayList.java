@@ -68,4 +68,8 @@ public class OrderArrayList implements Order {
         }
         return result;
     }
+
+    public CharSequence getTotalPriceAsText(){
+        return getTotalPrice() + " kr,-";
+    }
 }

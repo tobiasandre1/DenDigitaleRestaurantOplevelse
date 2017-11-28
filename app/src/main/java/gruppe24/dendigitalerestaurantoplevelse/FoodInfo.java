@@ -20,7 +20,7 @@ public class FoodInfo extends CustomToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_info);
 
-        super.addClickListeners();
+        super.makeToolbar();
 
         //Insert data into layout
         Bundle data = getIntent().getExtras();
