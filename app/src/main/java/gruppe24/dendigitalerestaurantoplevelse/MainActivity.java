@@ -6,42 +6,50 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.view.View;
 
-public class MainActivity extends CustomToolbarActivity{
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
+import gruppe24.dendigitalerestaurantoplevelse.fragments.fraghome;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.fragmenu;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.fragpersonal;
+
+public class MainActivity extends CustomToolbarActivity{
+    private BottomBar bottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        super.addClickListeners();
+        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
 
-    }
-    public void btnSushi_OnClick(View view) {
-        Intent intent = new Intent(this,FoodInfo.class);
-        startActivity(intent);
-    }
-    /*
-    public void SkiftFrag(View view){
-        Fragment fragment;
-        if ( view == findViewById(R.id.shoppingcart)) {
-            fragment = new ShoppingCart();
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place, fragment);
-            ft.commit();
-        }
-        /* Til andre fragments
-        if ( view == findViewById(R.id.hjælp)) {
-            fragment = new HjaelpFrag();
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_placering, fragment);
-            ft.commit();
-        }
+            public void onTabSelected(@IdRes int tabId) {
+                Fragment fragment;
+                if (tabId == R.id.tab_home) {
+                    fragment = new fraghome();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.frag_place, fragment);
+                    ft.commit();
+                } else if (tabId == R.id.tab_menu) {
+                    fragment = new fragmenu();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.frag_place, fragment);
+                    ft.commit();
+                } else if (tabId == R.id.tab_personal) {
+                    fragment = new fragpersonal();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.frag_place, fragment);
+                    ft.commit();
+                }
 
+            }
+        });
     }
-    */
 }
