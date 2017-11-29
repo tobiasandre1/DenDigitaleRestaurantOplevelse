@@ -1,82 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gruppe24.dendigitalerestaurantoplevelse.MainActivity"
     tools:layout_editor_absoluteY="25dp"
-    tools:layout_editor_absoluteX="0dp">
-
-    <Button
-        android:id="@+id/sushiDish"
-        android:layout_width="98dp"
-        android:layout_height="71dp"
-        android:onClick="btnSushi_OnClick"
-        android:text="Sushi"
-        android:visibility="visible"
-        app:layout_constraintLeft_toRightOf="@+id/imageView"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="72dp"
-        app:layout_constraintTop_toBottomOf="@+id/lowertoolbar" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="117dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/sushipicture"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
-        android:layout_marginTop="55dp"
-        app:layout_constraintTop_toBottomOf="@+id/lowertoolbar" />
+    tools:layout_editor_absoluteX="0dp"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <include
-        layout="@layout/toolbar"
         android:id="@+id/include"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"></include>
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/lowertoolbar"
-        android:layout_width="fill_parent"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:weightSum="1"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        android:layout_alignEnd="@+id/frag_place"
+        android:layout_alignParentStart="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="4dp"></include>
 
-        <Button
-            android:id="@+id/home"
-            android:layout_width="100dp"
-            android:layout_height="fill_parent"
-            android:gravity="center_vertical|right"
-            android:text="Home"
-            android:textAlignment="center" />
+    // using a custom toolbar from https://github.com/roughike/BottomBar, due to the inbuilt libary
+    to constrained
 
-        <Button
-            android:id="@+id/menu"
-            android:layout_width="100dp"
-            android:layout_height="fill_parent"
-            android:gravity="center_vertical|right"
-            android:text="Menu"
-            android:textAlignment="center" />
+    <fragment
+        android:id="@+id/frag_place"
+        android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.frag_temporary"
+        android:layout_width="match_parent"
+        android:layout_height="377dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="300dp"
+        android:layout_weight="1.01" />
 
-        <Button
-            android:id="@+id/personal"
-            android:layout_width="100dp"
-            android:layout_height="fill_parent"
-            android:gravity="center_vertical|right"
-            android:text="Personal"
-            android:textAlignment="center" />
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        app:bb_behavior="underNavbar"
+        app:bb_tabXmlResource="@xml/items"
+        tools:layout_editor_absoluteX="573dp"
+        tools:layout_editor_absoluteY="587dp" />
 
 
-    </android.support.v7.widget.Toolbar>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
