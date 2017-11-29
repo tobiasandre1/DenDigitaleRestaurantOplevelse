@@ -1,18 +1,11 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TextView;
 
-import gruppe24.dendigitalerestaurantoplevelse.backend.FoodInformationArrayList;
-import gruppe24.dendigitalerestaurantoplevelse.backend.FoodsInformation;
+import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
 
 
 public class ShoppingCart extends CustomToolbarActivity {
@@ -22,9 +15,9 @@ public class ShoppingCart extends CustomToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-        super.addClickListeners();
+        super.makeToolbar();
 
-        FoodsInformation info = new FoodInformationArrayList();
+        Menu info = new MenuArrayList();
 
 
         String[] names = new String[2];

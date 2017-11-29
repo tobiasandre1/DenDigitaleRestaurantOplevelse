@@ -1,0 +1,18 @@
+<tabs>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_home"
+        title="Home"
+        activeColor="@color/colorPrimaryDark"
+        />
+    <tab
+        id="@+id/tab_menu"
+        icon="@drawable/ic_menu_icon"
+        title="Menu"
+        activeColor="@color/colorPrimaryDark" />
+    <tab
+        id="@+id/tab_personal"
+        icon="@drawable/ic_personal"
+        title="Personal"
+        activeColor="@color/colorPrimaryDark"/>
+</tabs>
