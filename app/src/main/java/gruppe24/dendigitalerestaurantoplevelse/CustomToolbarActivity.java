@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.TextView;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 
@@ -41,7 +42,7 @@ public class CustomToolbarActivity extends AppCompatActivity{
     }
 
     protected void update(){
-        Button shop = (Button) findViewById(R.id.shoppingcart);
+        TextView shop = (TextView) findViewById(R.id.shoppingcart_text);
         shop.setText(backend.getUser().getShoppingCart().getTotalPriceAsText());
     }
 
