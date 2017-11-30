@@ -2,6 +2,7 @@ package gruppe24.dendigitalerestaurantoplevelse.backend;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
 
@@ -46,5 +47,15 @@ public class MenuArrayList implements Menu {
     @Override
     public ArrayList<Dish> getDishes(){
         return dishes;
+    }
+
+    @Override
+    public String[] getDishesAsStrings(){
+        List<Dish> dishes = getDishes();
+        String[] result = new String[dishes.size()];
+        for(int i=0; i<dishes.size(); i++){
+            result[i] = dishes.get(i).getName().toString();
+        }
+        return result;
     }
 }

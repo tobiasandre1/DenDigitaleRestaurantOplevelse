@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 
@@ -39,7 +40,7 @@ public class FoodInfo extends CustomToolbarActivity implements View.OnClickListe
         //Get dish data and set class dish variable
         Bundle data = getIntent().getExtras();
         CharSequence foodInfoDishName = data.getString("Food");
-        this.dish = super.backend.getMenu().getDish(foodInfoDishName);
+        this.dish = BackEndController.getMenu().getDish(foodInfoDishName);
 
     }
 
@@ -58,7 +59,8 @@ public class FoodInfo extends CustomToolbarActivity implements View.OnClickListe
 
     public void onClick(View v){
         if(v.getId() == R.id.addToBasket){
-            super.backend.getUser().getShoppingCart().add(this.dish);
+            BackEndController.getUser().getShoppingCart().add(this.dish);
+            super.update();
         }
     }
 
