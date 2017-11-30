@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/frag_place"
-        android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.frag_temporary"
+        android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.FragTemporary"
         android:layout_width="match_parent"
         android:layout_height="377dp"
         android:layout_alignParentStart="true"

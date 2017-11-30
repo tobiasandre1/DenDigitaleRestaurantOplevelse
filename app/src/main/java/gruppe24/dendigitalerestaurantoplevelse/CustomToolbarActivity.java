@@ -11,15 +11,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
+import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
+import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 
 public class CustomToolbarActivity extends AppCompatActivity{
 
     protected Toolbar toolbar;
-    protected static BackEndController backend = new BackEndController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(BackEndController.getUser()==null && BackEndController.getMenu()==null) {
+            Menu menu = new MenuArrayList();
+            User user = new User();
+            BackEndController.initialize(user, menu);
+            ;
+        }
 
         toolbar = (Toolbar) findViewById(R.id.uppertoolbar);
         setSupportActionBar(toolbar);
@@ -43,7 +52,13 @@ public class CustomToolbarActivity extends AppCompatActivity{
 
     protected void update(){
         TextView shop = (TextView) findViewById(R.id.shoppingcart_text);
-        shop.setText(backend.getUser().getShoppingCart().getTotalPriceAsText());
+        shop.setText(BackEndController.getUser().getShoppingCart().getTotalPriceAsText());
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        update();
     }
 
 }

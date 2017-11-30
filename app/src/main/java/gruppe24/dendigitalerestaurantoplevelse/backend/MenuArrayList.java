@@ -2,6 +2,7 @@ package gruppe24.dendigitalerestaurantoplevelse.backend;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
 
@@ -17,7 +18,11 @@ public class MenuArrayList implements Menu {
         dishes = new ArrayList<Dish>();
         /*dishes.add(new Dish("Salmon Sushi"));
         dishes.add(new Dish("Spicy Sushi"));*/
+        initializeDummyData();
+    }
 
+
+    public void initializeDummyData(){
         //Dummy data
         dishes.add(new Dish("Sashimi laks", 85, "/5 skiver", R.drawable.dishpicture_sashimi_laks,
                 "Sashimi af laks serveret med soya og wasabi",
@@ -29,7 +34,6 @@ public class MenuArrayList implements Menu {
                 "Sashimi af makrel med ingefær og forårsløg serveret med soya og wasabi ",
                 new ArrayList<CharSequence>(Arrays.asList("makrel", "sashimi", "ingefær"))));
     }
-
 
     @Override
     public Dish getDish(CharSequence name) {
@@ -46,5 +50,15 @@ public class MenuArrayList implements Menu {
     @Override
     public ArrayList<Dish> getDishes(){
         return dishes;
+    }
+
+    @Override
+    public String[] getDishesAsStrings(){
+        List<Dish> dishes = getDishes();
+        String[] result = new String[dishes.size()];
+        for(int i=0; i<dishes.size(); i++){
+            result[i] = dishes.get(i).getName().toString();
+        }
+        return result;
     }
 }

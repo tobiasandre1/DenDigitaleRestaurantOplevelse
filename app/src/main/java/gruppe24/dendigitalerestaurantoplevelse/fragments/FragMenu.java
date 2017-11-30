@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import gruppe24.dendigitalerestaurantoplevelse.R;
 
 
-public class fraghome extends Fragment {
-
+public class FragMenu extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +21,6 @@ public class fraghome extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fraghome, container, false);
+        return inflater.inflate(R.layout.fragment_fragmenu, container, false);
     }
-
 }

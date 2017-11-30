@@ -1,6 +1,5 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -13,10 +12,14 @@ import android.view.View;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.fraghome;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.fragmenu;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.fragpersonal;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
+import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
+import gruppe24.dendigitalerestaurantoplevelse.backend.User;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
 
 public class MainActivity extends CustomToolbarActivity {
 
@@ -32,19 +35,19 @@ public class MainActivity extends CustomToolbarActivity {
             public void onTabSelected(@IdRes int tabId) {
                 Fragment fragment;
                 if (tabId == R.id.tab_home) {
-                    fragment = new fraghome();
+                    fragment = new FragHome();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
                     ft.replace(R.id.frag_place, fragment);
                     ft.commit();
                 } else if (tabId == R.id.tab_menu) {
-                    fragment = new fragmenu();
+                    fragment = new FragMenu();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
                     ft.replace(R.id.frag_place, fragment);
                     ft.commit();
                 } else if (tabId == R.id.tab_personal) {
-                    fragment = new fragpersonal();
+                    fragment = new FragPersonal();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
                     ft.replace(R.id.frag_place, fragment);
@@ -53,8 +56,6 @@ public class MainActivity extends CustomToolbarActivity {
 
             }
         });
-
-
 
         super.makeToolbar();
 
@@ -66,7 +67,7 @@ public class MainActivity extends CustomToolbarActivity {
 
     public void startFoodInfoActivity(CharSequence food){
         Intent intent = new Intent(this,FoodInfo.class);
-        Dish dish = super.backend.getMenu().getDish(food);
+        Dish dish = BackEndController.getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);
     }

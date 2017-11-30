@@ -30,16 +30,18 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        app:layout_constraintBottom_toTopOf="@+id/lowertoolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/order"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
-        app:layout_constraintVertical_bias="0.666"></ListView>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"></ListView>
 
 
 
+    <!--
     <android.support.v7.widget.Toolbar
         android:id="@+id/lowertoolbar"
         android:layout_width="0dp"
@@ -53,15 +55,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
 
-        <Button
-            android:id="@+id/order"
-            android:layout_width="300dp"
-            android:layout_height="fill_parent"
-            android:text="Order"
-            android:textAlignment="center"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-
     </android.support.v7.widget.Toolbar>
+    -->
+
+    <Button
+        android:id="@+id/order"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Order"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"/>
 
 </android.support.constraint.ConstraintLayout>
