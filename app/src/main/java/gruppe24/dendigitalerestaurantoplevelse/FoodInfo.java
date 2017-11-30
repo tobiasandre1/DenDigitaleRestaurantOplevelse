@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 
-public class FoodInfo extends CustomToolbarActivity {
+public class FoodInfo extends CustomToolbarActivity implements View.OnClickListener{
+
+    private Dish dish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +25,41 @@ public class FoodInfo extends CustomToolbarActivity {
 
         super.makeToolbar();
 
-        //Insert data into layout
-        Bundle data = getIntent().getExtras();
-        CharSequence foodInfoDishName = data.getString("Food");
-        if(foodInfoDishName == null){System.out.println("Oi you dumb basterd, null");}
-        Dish dish = super.backend.getMenu().getDish(foodInfoDishName);
-        insertDish(dish);
+        insertDish();
+
+        Button add = (Button) findViewById(R.id.addToBasket);
+        add.setOnClickListener(this);
+
+
 
 
     }
 
-    public void insertDish(Dish dish){
+    private void getDishData(){
+        //Get dish data and set class dish variable
+        Bundle data = getIntent().getExtras();
+        CharSequence foodInfoDishName = data.getString("Food");
+        this.dish = super.backend.getMenu().getDish(foodInfoDishName);
+
+    }
+
+    private void insertDish(){
+        getDishData();
+        //Insert data into layout
         ImageView image = (ImageView) findViewById(R.id.imageView5);
         TextView title = (TextView) findViewById(R.id.dishName);
         TextView description = (TextView) findViewById(R.id.dishDesc);
 
-        image.setImageResource(dish.getImage());
-        title.setText(dish.getName());
-        description.setText(dish.getDescription());
+        image.setImageResource(this.dish.getImage());
+        title.setText(this.dish.getName());
+        description.setText(this.dish.getDescription());
 
+    }
+
+    public void onClick(View v){
+        if(v.getId() == R.id.addToBasket){
+            super.backend.getUser().getShoppingCart().add(this.dish);
+        }
     }
 
 }
