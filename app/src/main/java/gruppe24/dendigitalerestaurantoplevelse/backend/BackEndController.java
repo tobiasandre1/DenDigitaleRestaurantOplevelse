@@ -5,29 +5,29 @@ package gruppe24.dendigitalerestaurantoplevelse.backend;
  */
 
 public class BackEndController {
-    private User user;
-    private Menu menu;
+    private static User user;
+    private static Menu menu;
 
-    public BackEndController(){
-        user = new User();
-        menu = new MenuArrayList();
+    public static void initialize(User u, Menu m){
+        user = u;
+        menu = m;
     }
 
     //Getters and Setters
 
-    public User getUser() {
+    public static User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public static void setUser(User userN) {
+        user = userN;
     }
 
-    public Menu getMenu() {
+    public static Menu getMenu() {
         return menu;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public static void setMenu(Menu menuN) {
+        menu = menuN;
     }
 }

@@ -69,7 +69,20 @@ public class OrderArrayList implements Order {
         return result;
     }
 
+    private double getPrice(int place){
+        return orderItems.get(place).getDish().getPrice()*orderItems.get(place).getAmount();
+    }
+
     public CharSequence getTotalPriceAsText(){
         return getTotalPrice() + " kr,-";
+    }
+
+    public String[] getItemsAsStrings(){
+
+        String[] result = new String[orderItems.size()];
+        for(int i=0; i<orderItems.size(); i++){
+            result[i] = orderItems.get(i).getAmount() + " stk. " + orderItems.get(i).getDish().getName().toString() + " " + getPrice(i) + " kr,-";
+        }
+        return result;
     }
 }

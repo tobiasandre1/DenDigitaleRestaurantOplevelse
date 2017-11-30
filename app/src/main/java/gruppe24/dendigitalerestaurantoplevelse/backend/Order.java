@@ -11,5 +11,6 @@ public interface Order {
     public OrderItem get(CharSequence name);
     public double getTotalPrice();
     public CharSequence getTotalPriceAsText();
+    public String[] getItemsAsStrings();
 
 }
