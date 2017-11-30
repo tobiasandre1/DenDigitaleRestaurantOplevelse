@@ -24,10 +24,10 @@ public class Listview extends Activity{
         ListView listViewID = (ListView) findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
 
-        listViewID.setOnClickListener(
+        listViewID.setOnItemClickListener(
                 new AdapterView.OnItemClickListener(){
                     @Override
-                    public void OnItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String dish = String.valueOf(parent.getItemAtPosition(position));
                         Toast.makeText(Listview.this, dish, Toast.LENGTH_LONG).show();
                     }
