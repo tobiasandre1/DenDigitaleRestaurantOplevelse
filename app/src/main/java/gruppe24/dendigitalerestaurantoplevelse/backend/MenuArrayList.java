@@ -18,7 +18,11 @@ public class MenuArrayList implements Menu {
         dishes = new ArrayList<Dish>();
         /*dishes.add(new Dish("Salmon Sushi"));
         dishes.add(new Dish("Spicy Sushi"));*/
+        initializeDummyData();
+    }
 
+
+    public void initializeDummyData(){
         //Dummy data
         dishes.add(new Dish("Sashimi laks", 85, "/5 skiver", R.drawable.dishpicture_sashimi_laks,
                 "Sashimi af laks serveret med soya og wasabi",
@@ -30,7 +34,6 @@ public class MenuArrayList implements Menu {
                 "Sashimi af makrel med ingefær og forårsløg serveret med soya og wasabi ",
                 new ArrayList<CharSequence>(Arrays.asList("makrel", "sashimi", "ingefær"))));
     }
-
 
     @Override
     public Dish getDish(CharSequence name) {
