@@ -57,8 +57,6 @@ public class MainActivity extends CustomToolbarActivity {
             }
         });
 
-
-
         super.makeToolbar();
 
     }
