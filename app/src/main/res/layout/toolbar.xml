@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_gravity="fill">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/uppertoolbar"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        >
 
 
         <ImageButton
             android:id="@+id/menu_icon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_menu_icon" />
+            android:src="@drawable/ic_menu_icon"
+            android:tint="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            />
+
 
         <ImageButton
             android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_home" />
+            android:src="@drawable/ic_home"
+            android:tint="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
 
+        <!--
         <Button
             android:id="@+id/shoppingcart"
             android:layout_width="wrap_content"
@@ -35,18 +47,60 @@
             android:drawableRight="@drawable/ic_shopping_cart"
             android:gravity="center_vertical|right"
             android:text="0 kr,-"
+            android:tint="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
+            android:shadowColor="@color/colorPrimaryDark"
+            />-->
 
-            />
+
 
         <ImageButton
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@android:drawable/ic_menu_search" />
+            android:src="@android:drawable/ic_menu_search"
+            android:tint="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentEnd="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_gravity="right"/>
+
+        <LinearLayout
+            android:id="@+id/shoppingcart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="0dp"
+            android:layout_gravity="right">
+
+            <TextView
+                android:id="@+id/shoppingcart_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:text="0.0 kr,-"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <ImageView
+                android:id="@+id/shoppingcart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="0dp"
+                android:src="@drawable/ic_shopping_cart"
+                android:tint="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
 
 
     </android.support.v7.widget.Toolbar>
 
 
 
-</LinearLayout>
+</RelativeLayout>
