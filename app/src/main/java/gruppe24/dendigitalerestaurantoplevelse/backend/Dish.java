@@ -38,6 +38,21 @@ public class Dish{
         this.tags = tags;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if (o == null) return false;
+        if (o == this) return true;
+        if (!(o instanceof Dish))return false;
+
+        Dish d = (Dish)o;
+        if (    this.name == d.getName() && this.price == d.getPrice() &&
+                this.image == d.getImage() && this.description == d.getDescription()
+                ) {
+            return true;
+        }
+        return false;
+    }
+
     //Getters and setters
 
     public CharSequence getName() {
@@ -74,6 +89,13 @@ public class Dish{
 
     public CharSequence getPriceText(){  return price + "kr,- " + priceText; }
 
+    public void setPriceText(CharSequence priceText) { this.priceText = priceText; }
 
+    public List<CharSequence> getTags() {
+        return tags;
+    }
 
+    public void setTags(List<CharSequence> tags) {
+        this.tags = tags;
+    }
 }
