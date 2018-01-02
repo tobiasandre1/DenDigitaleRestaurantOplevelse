@@ -14,43 +14,47 @@ import android.support.design.widget.FloatingActionButton;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
 
 
-public class FoodInfo extends CustomToolbarActivity implements View.OnClickListener{
+public class FoodInfo extends android.app.Fragment implements View.OnClickListener{
 
     private Dish dish;
     FloatingActionButton fab;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_info);
+    }
 
-        super.makeToolbar();
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        insertDish();
+        View rootView = inflater.inflate(R.layout.activity_food_info, container, false);
 
-        fab  = (FloatingActionButton) findViewById(R.id.addToBasket);
+        insertDish(rootView);
+
+        fab  = (FloatingActionButton) rootView.findViewById(R.id.addToBasket);
         fab.setOnClickListener(this);
 
-
-
+        return rootView;
 
     }
 
     private void getDishData(){
-        //Get dish data and set class dish variable
-        Bundle data = getIntent().getExtras();
-        CharSequence foodInfoDishName = data.getString("Food");
-        this.dish = BackEndController.getMenu().getDish(foodInfoDishName);
+        Bundle data = getArguments();
+        this.dish = BackEndController.getMenu().getDish(data.getString("Food"));
 
     }
 
-    private void insertDish(){
+    private void insertDish(View rootView){
         getDishData();
         //Insert data into layout
-        ImageView image = (ImageView) findViewById(R.id.imageView5);
-        TextView title = (TextView) findViewById(R.id.dishName);
-        TextView description = (TextView) findViewById(R.id.dishDesc);
+        ImageView image = (ImageView) rootView.findViewById(R.id.imageView5);
+        TextView title = (TextView) rootView.findViewById(R.id.dishName);
+        TextView description = (TextView) rootView.findViewById(R.id.dishDesc);
 
         image.setImageResource(this.dish.getImage());
         title.setText(this.dish.getName());
@@ -61,7 +65,8 @@ public class FoodInfo extends CustomToolbarActivity implements View.OnClickListe
     public void onClick(View v){
         if(v.getId() == R.id.addToBasket){
             BackEndController.getUser().getShoppingCart().add(this.dish);
-            super.update();
+            Toolbar toolbar = (Toolbar) getFragmentManager().findFragmentById(R.id.toolbar);
+            toolbar.update();
         }
     }
 

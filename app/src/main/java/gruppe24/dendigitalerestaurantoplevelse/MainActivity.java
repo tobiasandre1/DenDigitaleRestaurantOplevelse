@@ -69,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
                 if(fragment!=null){
                     ft.replace(R.id.frag_place, fragment);
+                    ft.commit();
                 }
-                ft.commit();
+
 
             }
         });
@@ -82,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
         Dish dish = BackEndController.getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+        Toolbar toolbar = (Toolbar) getFragmentManager().findFragmentById(R.id.toolbar);
+        toolbar.update();
     }
 
 }

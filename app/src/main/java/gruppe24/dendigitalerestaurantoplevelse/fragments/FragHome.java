@@ -58,10 +58,23 @@ public class FragHome extends Fragment {
     }
 
     public void startFoodInfoActivity(CharSequence food){
+        Bundle data = new Bundle();
+        data.putString("Food", food.toString());
+
+        Fragment fragment = new FoodInfo();
+        fragment.setArguments(data);
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.frag_place, fragment);
+        ft.commit();
+
+
+        /*
         Intent intent = new Intent(getActivity(),FoodInfo.class);
         Dish dish = BackEndController.getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
 }
