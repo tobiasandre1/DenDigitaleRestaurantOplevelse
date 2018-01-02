@@ -13,19 +13,15 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        >
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-
-        <ImageButton
-            android:id="@+id/home"
+        <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_home"
-            android:tint="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Placeholder"
+            android:textColor="@color/colorPrimaryDark" />
 
         <LinearLayout
             android:id="@+id/shoppingcart"
@@ -45,7 +41,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
                 android:text="0.0 kr,-"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/colorPrimaryDark"
+                />
 
             <ImageView
                 android:id="@+id/shoppingcart_button"

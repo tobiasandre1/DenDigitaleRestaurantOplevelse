@@ -10,15 +10,15 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <include
+    <fragment
         android:id="@+id/include"
-        layout="@layout/toolbar"
+        android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/frag_place"
         android:layout_alignParentStart="true"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="4dp"></include>
+        tools:layout_editor_absoluteY="4dp"></fragment>
 
     // using a custom toolbar from https://github.com/roughike/BottomBar, due to the inbuilt libary
     to constrained
