@@ -34,8 +34,6 @@ public class Toolbar extends Fragment implements View.OnClickListener {
 
         //LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.toolbar_home, container, false);
         View rootView = inflater.inflate(R.layout.toolbar_home, container, false);
-        TextView title = (TextView) rootView.findViewById(R.id.title);
-        title.setText("Home");
         LinearLayout shopping = (LinearLayout) rootView.findViewById(R.id.shoppingcart);
         shopping.setOnClickListener(this);
 
@@ -47,6 +45,11 @@ public class Toolbar extends Fragment implements View.OnClickListener {
         if(v.getId() == R.id.shoppingcart){
             (context).startActivity(new Intent(context, ShoppingCart.class));
         }
+    }
+
+    public void setTitle(CharSequence text){
+        TextView title = (TextView) getView().findViewById(R.id.title);
+        title.setText(text);
     }
 }
 
