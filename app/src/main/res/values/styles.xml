@@ -5,11 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:windowBackground">@drawable/gradient_background_smokey</item>
         <item name="android:textColor">@color/colorText</item>
         <item name="colorAccent">@android:color/holo_red_dark</item>
         <item name="android:colorBackground">@color/background_material_dark</item>
-        <item name="android:textColorSecondary">@android:color/primary_text_dark_nodisable</item>
     </style>
+
 
 </resources>

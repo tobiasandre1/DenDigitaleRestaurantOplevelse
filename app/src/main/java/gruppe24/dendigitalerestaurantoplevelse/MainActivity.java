@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 
 import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
@@ -18,6 +18,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
 import gruppe24.dendigitalerestaurantoplevelse.backend.User;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //Initialize BackEndController with data
         if(BackEndController.getUser()==null && BackEndController.getMenu()==null) {
             Menu menu = new MenuArrayList();
             User user = new User();
@@ -40,46 +43,55 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
+        //Add listeners to the bottom nav bar
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-
+            @Override
             public void onTabSelected(@IdRes int tabId) {
-                Fragment fragment = null;
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
+                selectTab(tabId);
+            }
+        });
 
-                if (tabId == R.id.tab_home) {
-                    fragment = new FragHome();
-                    toolbar.setTitle("Home");
-                }
-                else if (tabId == R.id.tab_menu) {
-                    fragment = new FragMenu();
-                    toolbar.setTitle("Menu");
-                }
-                else if (tabId == R.id.tab_personal) {
-                    fragment = new FragPersonal();
-                    toolbar.setTitle("Personal");
-                }
-                else if (tabId == R.id.tab_search) {
-                    fragment = new FragSearch();
-                    toolbar.setTitle("Search");
-                }
-
-                if(fragment!=null){
-                    ft.replace(R.id.frag_place, fragment);
-                    ft.commit();
-                }
-
-
+        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
+            @Override
+            public void onTabReSelected(@IdRes int tabId) {
+                selectTab(tabId);
             }
         });
 
     }
 
+    private void selectTab(int tabId){
+        Fragment fragment = null;
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
+
+        if (tabId == R.id.tab_home) {
+            fragment = new FragHome();
+            toolbar.setTitle("Home");
+        }
+        else if (tabId == R.id.tab_menu) {
+            fragment = new FragMenu();
+            toolbar.setTitle("Menu");
+        }
+        else if (tabId == R.id.tab_personal) {
+            fragment = new FragPersonal();
+            toolbar.setTitle("Personal");
+        }
+        else if (tabId == R.id.tab_search) {
+            fragment = new FragSearch();
+            toolbar.setTitle("Search");
+        }
+
+        if(fragment!=null){
+            ft.replace(R.id.frag_place, fragment);
+            ft.commit();
+        }
+    }
+
     public void startFoodInfoActivity(CharSequence food){
-        Intent intent = new Intent(this,FoodInfo.class);
+        Intent intent = new Intent(this,FragFoodInfo.class);
         Dish dish = BackEndController.getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);

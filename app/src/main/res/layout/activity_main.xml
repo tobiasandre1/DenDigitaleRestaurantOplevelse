@@ -20,6 +20,12 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="4dp"></fragment>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorPrimary">
+    </LinearLayout>
+
     // using a custom toolbar from https://github.com/roughike/BottomBar, due to the inbuilt libary
     to constrained
 
@@ -34,6 +40,12 @@
         tools:layout_editor_absoluteY="300dp"
         android:layout_weight="1.01" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorPrimary">
+    </LinearLayout>
+
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -42,8 +54,10 @@
         android:layout_alignParentEnd="true"
         app:bb_behavior="underNavbar"
         app:bb_tabXmlResource="@xml/items"
-        tools:layout_editor_absoluteX="573dp"
-        tools:layout_editor_absoluteY="587dp" />
+        app:bb_activeTabColor="@color/colorAccent"
+        app:bb_inActiveTabColor="@color/colorPrimary"
+        app:bb_titleTextAppearance="@android:style/TextAppearance.Small"
+        android:background="@color/colorPrimaryDark"/>
 
 
 </LinearLayout>
