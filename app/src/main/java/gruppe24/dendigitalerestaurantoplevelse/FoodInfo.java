@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.support.design.widget.FloatingActionButton;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
@@ -18,7 +19,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 public class FoodInfo extends CustomToolbarActivity implements View.OnClickListener{
 
     private Dish dish;
-
+    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,8 @@ public class FoodInfo extends CustomToolbarActivity implements View.OnClickListe
 
         insertDish();
 
-        Button add = (Button) findViewById(R.id.addToBasket);
-        add.setOnClickListener(this);
+        fab  = (FloatingActionButton) findViewById(R.id.addToBasket);
+        fab.setOnClickListener(this);
 
 
 
