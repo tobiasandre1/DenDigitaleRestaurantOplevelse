@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.ShoppingCart;
+import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 
 /**
  * Created by Tobias on 02-01-2018.
@@ -34,8 +37,6 @@ public class Toolbar extends Fragment implements View.OnClickListener {
 
         //LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.toolbar_home, container, false);
         View rootView = inflater.inflate(R.layout.toolbar_home, container, false);
-        TextView title = (TextView) rootView.findViewById(R.id.title);
-        title.setText("Home");
         LinearLayout shopping = (LinearLayout) rootView.findViewById(R.id.shoppingcart);
         shopping.setOnClickListener(this);
 
@@ -47,6 +48,16 @@ public class Toolbar extends Fragment implements View.OnClickListener {
         if(v.getId() == R.id.shoppingcart){
             (context).startActivity(new Intent(context, ShoppingCart.class));
         }
+    }
+
+    public void setTitle(CharSequence text){
+        TextView title = (TextView) getView().findViewById(R.id.title);
+        title.setText(text);
+    }
+
+    public void update(){
+        TextView price = (TextView) getView().findViewById(R.id.shoppingcart_text);
+        price.setText(BackEndController.getUser().getShoppingCart().getTotalPriceAsText());
     }
 }
 

@@ -22,6 +22,7 @@ import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,36 +39,39 @@ public class MainActivity extends AppCompatActivity {
             ;
         }
 
+
+
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
 
             public void onTabSelected(@IdRes int tabId) {
-                Fragment fragment;
+                Fragment fragment = null;
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
+
                 if (tabId == R.id.tab_home) {
                     fragment = new FragHome();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.frag_place, fragment);
-                    ft.commit();
-                } else if (tabId == R.id.tab_menu) {
+                    toolbar.setTitle("Home");
+                }
+                else if (tabId == R.id.tab_menu) {
                     fragment = new FragMenu();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.frag_place, fragment);
-                    ft.commit();
-                } else if (tabId == R.id.tab_personal) {
+                    toolbar.setTitle("Menu");
+                }
+                else if (tabId == R.id.tab_personal) {
                     fragment = new FragPersonal();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.frag_place, fragment);
-                    ft.commit();
-                } else if (tabId == R.id.tab_search) {
+                    toolbar.setTitle("Personal");
+                }
+                else if (tabId == R.id.tab_search) {
                     fragment = new FragSearch();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
+                    toolbar.setTitle("Search");
+                }
+
+                if(fragment!=null){
                     ft.replace(R.id.frag_place, fragment);
                     ft.commit();
                 }
+
 
             }
         });
@@ -79,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
         Dish dish = BackEndController.getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+        Toolbar toolbar = (Toolbar) getFragmentManager().findFragmentById(R.id.toolbar);
+        toolbar.update();
     }
 
 }
