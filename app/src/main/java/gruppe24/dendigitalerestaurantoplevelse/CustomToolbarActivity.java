@@ -15,6 +15,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
 import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 
+//TODO Delete this class once all other classes have been changed to no longer include it
 public class CustomToolbarActivity extends AppCompatActivity{
 
     protected Toolbar toolbar;

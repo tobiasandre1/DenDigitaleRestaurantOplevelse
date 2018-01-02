@@ -3,15 +3,22 @@ package gruppe24.dendigitalerestaurantoplevelse.fragments;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
-import gruppe24.dendigitalerestaurantoplevelse.Listview;
+import gruppe24.dendigitalerestaurantoplevelse.FoodInfo;
 import gruppe24.dendigitalerestaurantoplevelse.R;
+import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 
 public class FragHome extends Fragment {
@@ -24,15 +31,37 @@ public class FragHome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         // Inflate the layout for this fragment
 
-        Fragment fragment = new Listview();
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frag_place, fragment);
-        ft.commit();
+        LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.listview, container, false);
 
-        return inflater.inflate(R.layout.fragment_fraghome, container, false);
+
+        String[] dishes = BackEndController.getMenu().getDishesAsStrings();
+        ListAdapter listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
+        ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
+        listViewID.setAdapter(listAdapter);
+
+        listViewID.setOnItemClickListener(
+                new AdapterView.OnItemClickListener(){
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String dish = String.valueOf(parent.getItemAtPosition(position));
+                        //Toast.makeText(getActivity(), dish, Toast.LENGTH_LONG).show();
+                        startFoodInfoActivity(dish);
+
+                    }
+                }
+        );
+        return layout;
+    }
+
+    public void startFoodInfoActivity(CharSequence food){
+        Intent intent = new Intent(getActivity(),FoodInfo.class);
+        Dish dish = BackEndController.getMenu().getDish(food);
+        intent.putExtra("Food", dish.getName().toString());
+        startActivity(intent);
     }
 
 }

@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
-class ListAdapter extends ArrayAdapter<String> {
+public class ListAdapter extends ArrayAdapter<String> {
 
     public ListAdapter(Context context, String[] dishes) {
         super(context, R.layout.custom_row, dishes);
