@@ -1,17 +1,18 @@
 package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
 
+/**
+ * Created by Tobias on 02-01-2018.
+ */
 
-public class FragMenu extends Fragment {
+public class FragSearch extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

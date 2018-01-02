@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 
@@ -20,14 +21,22 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
 
-public class MainActivity extends CustomToolbarActivity {
+public class MainActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(BackEndController.getUser()==null && BackEndController.getMenu()==null) {
+            Menu menu = new MenuArrayList();
+            User user = new User();
+            BackEndController.initialize(user, menu);
+            ;
+        }
 
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
@@ -52,17 +61,17 @@ public class MainActivity extends CustomToolbarActivity {
                     FragmentTransaction ft = fm.beginTransaction();
                     ft.replace(R.id.frag_place, fragment);
                     ft.commit();
+                } else if (tabId == R.id.tab_search) {
+                    fragment = new FragSearch();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.frag_place, fragment);
+                    ft.commit();
                 }
 
             }
         });
 
-        super.makeToolbar();
-
-    }
-
-    public void btnSushi_OnClick(View view) {
-        startFoodInfoActivity("Sashimi laks"); //TODO Replace "Sashimi laks" with data from buttons in arrayadapter
     }
 
     public void startFoodInfoActivity(CharSequence food){
