@@ -2,9 +2,6 @@ package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,10 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import gruppe24.dendigitalerestaurantoplevelse.FoodInfo;
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 
 public class FragHome extends Fragment {
@@ -61,7 +56,7 @@ public class FragHome extends Fragment {
         Bundle data = new Bundle();
         data.putString("Food", food.toString());
 
-        Fragment fragment = new FoodInfo();
+        Fragment fragment = new FragFoodInfo();
         fragment.setArguments(data);
 
         FragmentManager fm = getFragmentManager();
@@ -71,7 +66,7 @@ public class FragHome extends Fragment {
 
 
         /*
-        Intent intent = new Intent(getActivity(),FoodInfo.class);
+        Intent intent = new Intent(getActivity(),FragFoodInfo.class);
         Dish dish = BackEndController.getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);*/

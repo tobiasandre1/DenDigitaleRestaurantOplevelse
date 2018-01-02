@@ -3,21 +3,17 @@
         id="@+id/tab_home"
         icon="@mipmap/ic_home"
         title="Home"
-        activeColor="@color/colorPrimaryDark"
         />
     <tab
         id="@+id/tab_menu"
         icon="@mipmap/ic_view_list"
-        title="Menu"
-        activeColor="@color/colorPrimaryDark" />
+        title="Menu"/>
     <tab
         id="@+id/tab_personal"
         icon="@mipmap/ic_face"
-        title="Personal"
-        activeColor="@color/colorPrimaryDark"/>
+        title="Personal" />
     <tab
         id="@+id/tab_search"
         icon="@mipmap/ic_search"
-        title="Search"
-        activeColor="@color/colorPrimaryDark"/>
+        title="Search" />
 </tabs>

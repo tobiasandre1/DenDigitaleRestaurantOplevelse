@@ -3,7 +3,8 @@
     <color name="colorPrimary">#FFF</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorBackground">#000</color>
-    <color name="colorText">#EFEFEF</color>
-    <color name="colorAccent">#FF0202</color>
+    <color name="colorText">#FFF</color>
+    <color name="colorAccent">#F22</color>
     <color name="background_material_dark">#515151</color>
+    <color name="transparent">#CC000000</color>
 </resources>

@@ -1,23 +1,20 @@
-package gruppe24.dendigitalerestaurantoplevelse;
+package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
 
+import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
 
 
-public class FoodInfo extends android.app.Fragment implements View.OnClickListener{
+public class FragFoodInfo extends android.app.Fragment implements View.OnClickListener{
 
     private Dish dish;
     FloatingActionButton fab;
@@ -32,7 +29,7 @@ public class FoodInfo extends android.app.Fragment implements View.OnClickListen
                                 Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        View rootView = inflater.inflate(R.layout.activity_food_info, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_food_info, container, false);
 
         insertDish(rootView);
 

@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
  * Created by Tobias on 30-11-2017.
  */
 
-public class FoodInfoActivityTest {
+public class FragFoodInfoTest {
     @Test
     public void assertDataIsCorrect(){
         //TODO make a test
