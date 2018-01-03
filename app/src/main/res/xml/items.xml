@@ -7,7 +7,7 @@
     <tab
         id="@+id/tab_menu"
         icon="@mipmap/ic_view_list"
-        title="Menu"/>
+        title="Menu" />
     <tab
         id="@+id/tab_personal"
         icon="@mipmap/ic_face"

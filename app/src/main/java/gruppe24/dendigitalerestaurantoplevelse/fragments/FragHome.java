@@ -61,8 +61,11 @@ public class FragHome extends Fragment {
 
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frag_place, fragment);
+        ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
         ft.commit();
+
+        Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
+        toolbar.setTitle(food);
 
 
         /*
