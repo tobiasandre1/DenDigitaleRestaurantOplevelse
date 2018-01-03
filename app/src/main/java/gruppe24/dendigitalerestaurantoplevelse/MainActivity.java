@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(fragment!=null){
-            ft.replace(R.id.frag_place, fragment);
+            ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
             ft.commit();
         }
     }

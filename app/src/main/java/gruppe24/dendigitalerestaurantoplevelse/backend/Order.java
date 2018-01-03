@@ -6,6 +6,7 @@ package gruppe24.dendigitalerestaurantoplevelse.backend;
 
 public interface Order {
     public void add(Dish dish);
+    public void setAmount(Dish dish, int amount);
     public void reduce(Dish dish);
     public void remove(Dish dish);
     public OrderItem get(CharSequence name);

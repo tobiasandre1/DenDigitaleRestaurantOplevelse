@@ -61,6 +61,24 @@ public class OrderArrayList implements Order {
         return null;
     }
 
+    public void setAmount(Dish dish, int amount){
+        for(OrderItem i: orderItems){
+            if(i.getDish().equals(dish)){
+                if(amount==0){
+                    orderItems.remove(i);
+                    return;
+                }
+                else{
+                    i.setAmount(amount);
+                    return;
+                }
+
+            }
+        }
+        orderItems.add(new OrderItem(dish, amount));
+
+    }
+
     public double getTotalPrice(){
         double result = 0;
         for(OrderItem i : orderItems){
