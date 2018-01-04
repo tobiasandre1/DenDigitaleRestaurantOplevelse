@@ -1,8 +1,6 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
 import android.content.Context;
-import android.provider.Settings;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.ArrayAdapter;
@@ -12,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 public class ListAdapter extends ArrayAdapter<String> {
@@ -30,7 +28,8 @@ public class ListAdapter extends ArrayAdapter<String> {
         CharSequence dishName = getItem(position);
 
         try {
-            Dish dish = BackEndController.getMenu().getDish(dishName);
+            Backend backend = Backend.getInstance();
+            Dish dish = backend.getMenu().getDish(dishName);
 
             TextView itemText = (TextView) customView.findViewById(R.id.textviewitemID);
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
