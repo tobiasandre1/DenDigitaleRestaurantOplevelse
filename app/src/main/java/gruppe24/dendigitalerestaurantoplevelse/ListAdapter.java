@@ -35,7 +35,7 @@ public class ListAdapter extends ArrayAdapter<String> {
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
 
             itemText.setText(dish.getName());
-            itemImage.setImageResource(dish.getImage());
+            itemImage.setImageDrawable(dish.getImage());
 
         } catch(NullPointerException e){
             System.out.println("Could not find dish named: " + dishName);

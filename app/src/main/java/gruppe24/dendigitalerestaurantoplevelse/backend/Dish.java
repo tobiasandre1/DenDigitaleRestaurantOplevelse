@@ -1,8 +1,12 @@
 package gruppe24.dendigitalerestaurantoplevelse.backend;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,24 +19,39 @@ public class Dish{
     private CharSequence name;
     private CharSequence priceText;
     private double price;
-    private int image; //TODO get this to refer to an image
+    private int imageId; //TODO get this to refer to an imageId
     private CharSequence description;
     private List<CharSequence> tags;
+    private String url;
+    private Drawable image;
 
 
-    public Dish(CharSequence name, double price, int image, CharSequence description){
+    public Dish(CharSequence name, double price, int imageId, CharSequence description){
         this.name = name;
         this.price = price;
-        this.image = image;
+        this.imageId = imageId;
         this.description = description;
         this.priceText = "";
         this.tags = new ArrayList<>();
     }
 
-    public Dish(CharSequence name, double price, CharSequence priceText, int image, CharSequence description, List<CharSequence> tags){
+    public Dish(CharSequence name, double price, CharSequence priceText, int imageId, CharSequence description, List<CharSequence> tags){
         this.name = name;
         this.price = price;
-        this.image = image;
+        this.imageId = imageId;
+        this.description = description;
+        this.priceText = priceText;
+        this.tags = tags;
+    }
+
+    public Dish(CharSequence name, double price, CharSequence priceText, String url, CharSequence description, List<CharSequence> tags){
+        this.name = name;
+        this.price = price;
+
+        this.url = url;
+        GetImageAsyncTask net = new GetImageAsyncTask();
+        net.execute(url);
+
         this.description = description;
         this.priceText = priceText;
         this.tags = tags;
@@ -45,8 +64,7 @@ public class Dish{
         if (!(o instanceof Dish))return false;
 
         Dish d = (Dish)o;
-        if (    this.name == d.getName() && this.price == d.getPrice() &&
-                this.image == d.getImage() && this.description == d.getDescription()
+        if (    this.name == d.getName() && this.price == d.getPrice() && this.description == d.getDescription()
                 ) {
             return true;
         }
@@ -71,12 +89,13 @@ public class Dish{
         this.price = price;
     }
 
-    public int getImage() {
-        return image;
-    }
+    /*
+    public int getImageId() {
+        return imageId;
+    }*/
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 
     public CharSequence getDescription() {
@@ -99,5 +118,41 @@ public class Dish{
         this.tags = tags;
     }
 
+    class GetImageAsyncTask extends AsyncTask<String, Void, Drawable> {
+        @Override
+        protected Drawable doInBackground(String... urls) {
+            try {
+                System.out.println("No exceptions so far");
+                InputStream stream = (InputStream) new URL(urls[0]).getContent();
+                Drawable result = Drawable.createFromStream(stream, "tag");
+                return result;
+
+            } catch (MalformedURLException e) {
+                System.out.println("Ho boy, there was a malformed url exception");
+                System.out.println(e);
+            } catch (IOException e) {
+                System.out.println("Ho boy, there was an IOException madafakker");
+                System.out.println(e);
+            } catch (Exception e) {
+                System.out.println("I don't even know what happened");
+                System.out.println(e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Drawable result){
+            image = result;
+        }
+    }
+
+    public Drawable getImage(){
+        if(image != null){
+            return image;
+        }
+        else{
+            return null;
+        }
+    }
 
 }
