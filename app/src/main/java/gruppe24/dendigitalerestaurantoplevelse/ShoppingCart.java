@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
 
@@ -23,7 +23,7 @@ public class ShoppingCart extends CustomToolbarActivity {
 
 
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, BackEndController.getUser().getShoppingCart().getItemsAsStrings());
+        ArrayAdapter adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, Backend.getInstance().getUser().getShoppingCart().getItemsAsStrings());
 
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);

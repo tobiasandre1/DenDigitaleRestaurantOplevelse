@@ -5,18 +5,15 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 import gruppe24.dendigitalerestaurantoplevelse.backend.OrderItem;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
 
 
 public class FragFoodInfo extends android.app.Fragment implements View.OnClickListener{
@@ -52,7 +49,7 @@ public class FragFoodInfo extends android.app.Fragment implements View.OnClickLi
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if(event.getAction()==KeyEvent.ACTION_DOWN && keyCode==KeyEvent.KEYCODE_ENTER){
-                    BackEndController.getUser().getShoppingCart().setAmount(dish, Integer.parseInt(amount.getText().toString()));
+                    Backend.getInstance().getUser().getShoppingCart().setAmount(dish, Integer.parseInt(amount.getText().toString()));
                     Toolbar toolbar = (Toolbar) getFragmentManager().findFragmentById(R.id.toolbar);
                     toolbar.update();
                     updateExtraButtons();
@@ -70,7 +67,7 @@ public class FragFoodInfo extends android.app.Fragment implements View.OnClickLi
 
     private void getDishData(){
         Bundle data = getArguments();
-        this.dish = BackEndController.getMenu().getDish(data.getString("Food"));
+        this.dish = Backend.getInstance().getMenu().getDish(data.getString("Food"));
 
     }
 
@@ -91,10 +88,10 @@ public class FragFoodInfo extends android.app.Fragment implements View.OnClickLi
     public void onClick(View v){
         switch (v.getId()){
             case R.id.addToBasket:
-                BackEndController.getUser().getShoppingCart().add(this.dish);
+                Backend.getInstance().getUser().getShoppingCart().add(this.dish);
                 break;
             case R.id.remove:
-                BackEndController.getUser().getShoppingCart().remove(this.dish);
+                Backend.getInstance().getUser().getShoppingCart().remove(this.dish);
                 break;
 
 
@@ -105,7 +102,7 @@ public class FragFoodInfo extends android.app.Fragment implements View.OnClickLi
     }
 
     private void updateExtraButtons(){
-        OrderItem item = BackEndController.getUser().getShoppingCart().get(this.dish.getName());
+        OrderItem item = Backend.getInstance().getUser().getShoppingCart().get(this.dish.getName());
         if(item == null){
             buttons.setVisibility(View.GONE);
         } else{

@@ -98,4 +98,6 @@ public class Dish{
     public void setTags(List<CharSequence> tags) {
         this.tags = tags;
     }
+
+
 }
