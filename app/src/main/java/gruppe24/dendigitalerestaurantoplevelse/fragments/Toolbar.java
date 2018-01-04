@@ -2,7 +2,6 @@ package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +10,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.ShoppingCart;
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 
 /**
  * Created by Tobias on 02-01-2018.
@@ -57,7 +54,7 @@ public class Toolbar extends Fragment implements View.OnClickListener {
 
     public void update(){
         TextView price = (TextView) getView().findViewById(R.id.shoppingcart_text);
-        price.setText(BackEndController.getUser().getShoppingCart().getTotalPriceAsText());
+        price.setText(Backend.getInstance().getUser().getShoppingCart().getTotalPriceAsText());
     }
 }
 

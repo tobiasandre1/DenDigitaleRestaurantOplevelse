@@ -13,7 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 
 
 public class FragHome extends Fragment {
@@ -33,7 +33,7 @@ public class FragHome extends Fragment {
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.listview, container, false);
 
 
-        String[] dishes = BackEndController.getMenu().getDishesAsStrings();
+        String[] dishes = Backend.getInstance().getMenu().getDishesAsStrings();
         ListAdapter listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
@@ -61,13 +61,16 @@ public class FragHome extends Fragment {
 
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frag_place, fragment);
+        ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
         ft.commit();
+
+        Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
+        toolbar.setTitle(food);
 
 
         /*
         Intent intent = new Intent(getActivity(),FragFoodInfo.class);
-        Dish dish = BackEndController.getMenu().getDish(food);
+        Dish dish = Backend.getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);*/
     }

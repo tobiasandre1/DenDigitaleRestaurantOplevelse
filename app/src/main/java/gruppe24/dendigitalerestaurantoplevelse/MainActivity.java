@@ -13,11 +13,8 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
-import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
-import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
@@ -29,19 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //Initialize BackEndController with data
-        if(BackEndController.getUser()==null && BackEndController.getMenu()==null) {
-            Menu menu = new MenuArrayList();
-            User user = new User();
-            BackEndController.initialize(user, menu);
-            ;
-        }
-
 
         //Add listeners to the bottom nav bar
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
@@ -85,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(fragment!=null){
-            ft.replace(R.id.frag_place, fragment);
+            ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
             ft.commit();
         }
     }
 
     public void startFoodInfoActivity(CharSequence food){
         Intent intent = new Intent(this,FragFoodInfo.class);
-        Dish dish = BackEndController.getMenu().getDish(food);
+        Dish dish = Backend.getInstance().getMenu().getDish(food);
         intent.putExtra("Food", dish.getName().toString());
         startActivity(intent);
     }
@@ -101,8 +88,12 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();  // Always call the superclass method first
 
+
         Toolbar toolbar = (Toolbar) getFragmentManager().findFragmentById(R.id.toolbar);
         toolbar.update();
+
+
+        //System.out.println(backend.getMenu().getDishes().get(0).getName());
     }
 
 }

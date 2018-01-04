@@ -5,6 +5,7 @@
     <color name="colorBackground">#000</color>
     <color name="colorText">#FFF</color>
     <color name="colorAccent">#F22</color>
+    <color name="colorGreenAccent">#2F2</color>
     <color name="background_material_dark">#515151</color>
     <color name="transparent">#CC000000</color>
 </resources>
