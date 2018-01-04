@@ -31,11 +31,14 @@ public class ListAdapter extends ArrayAdapter<String> {
             Backend backend = Backend.getInstance();
             Dish dish = backend.getMenu().getDish(dishName);
 
-            TextView itemText = (TextView) customView.findViewById(R.id.textviewitemID);
+            TextView itemText = (TextView) customView.findViewById(R.id.nameID);
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
+            TextView itemPriceText = (TextView) customView.findViewById(R.id.priceID);
+
 
             itemText.setText(dish.getName());
             itemImage.setImageResource(dish.getImage());
+            itemPriceText.setText(dish.getPriceText());
 
         } catch(NullPointerException e){
             System.out.println("Could not find dish named: " + dishName);
