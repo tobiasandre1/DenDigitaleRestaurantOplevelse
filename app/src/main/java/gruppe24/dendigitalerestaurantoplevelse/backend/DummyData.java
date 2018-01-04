@@ -34,9 +34,12 @@ public class DummyData {
         dishes.add(new Dish("Sashimi saba", 59, "/5 skiver", "http://www.sushi.dk/media/products/T352_13711_SNS.png?ts=1460444054",
                 "Sashimi af makrel med ingefær og forårsløg serveret med soya og wasabi ",
                 new ArrayList<CharSequence>(Arrays.asList("makrel", "sashimi", "ingefær"))));
-        dishes.add(new Dish("Something fishy", 59, "/5 skiver", "http://www.sushi.dk/media/products/C716_13743_SNS.png?ts=1460556991",
-                "Sashimi af makrel med ingefær og forårsløg serveret med soya og wasabi ",
-                new ArrayList<CharSequence>(Arrays.asList("makrel", "sashimi", "ingefær"))));
+        dishes.add(new Dish("Broccoli", 44, "/2 stk", "http://www.sushi.dk/media/products/SQ225_13814_SNS.png?ts=1485859577",
+                "Grillet broccoli",
+                new ArrayList<CharSequence>(Arrays.asList("grøntsag, nigiri, broccoli"))));
+        dishes.add(new Dish("Aspara", 48, "/2 stk", "http://www.sushi.dk/media/products/SQ225_13759_SNS.png?ts=1485859330",
+                "Nigiri med asparges og sesam",
+                new ArrayList<CharSequence>(Arrays.asList("grøntsag, nigiri, asparges, sesam"))));
 
 
 

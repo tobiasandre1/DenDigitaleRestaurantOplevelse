@@ -143,8 +143,11 @@ public class Dish{
         @Override
         protected void onPostExecute(Drawable result){
             image = result;
+            for (Runnable obs : newPicturesLoaded) obs.run();
         }
     }
+
+    public static ArrayList<Runnable> newPicturesLoaded = new ArrayList<>();
 
     public Drawable getImage(){
         if(image != null){

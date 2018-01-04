@@ -25,6 +25,7 @@ public class ListAdapter extends ArrayAdapter<String> {
         LayoutInflater customInflater = LayoutInflater.from(getContext());
         View customView = customInflater.inflate(R.layout.custom_row, parent, false);
 
+        //notifyDataSetChanged();
         CharSequence dishName = getItem(position);
 
         try {

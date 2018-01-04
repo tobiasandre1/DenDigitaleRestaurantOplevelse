@@ -9,14 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 
 public class FragHome extends Fragment {
+
+    private gruppe24.dendigitalerestaurantoplevelse.ListAdapter listAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class FragHome extends Fragment {
 
 
         String[] dishes = Backend.getInstance().getMenu().getDishesAsStrings();
-        ListAdapter listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
+        listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
 
@@ -49,8 +51,23 @@ public class FragHome extends Fragment {
                     }
                 }
         );
+        Dish.newPicturesLoaded.add(newImagesLoaded);
         return layout;
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Dish.newPicturesLoaded.remove(newImagesLoaded);
+    }
+
+
+    Runnable newImagesLoaded = new Runnable() {
+        @Override
+        public void run() {
+            listAdapter.notifyDataSetChanged();
+        }
+    };
 
     public void startFoodInfoActivity(CharSequence food){
         Bundle data = new Bundle();
