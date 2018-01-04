@@ -40,6 +40,16 @@ public class DummyData {
         dishes.add(new Dish("Aspara", 48, "/2 stk", "http://www.sushi.dk/media/products/SQ225_13759_SNS.png?ts=1485859330",
                 "Nigiri med asparges og sesam",
                 new ArrayList<CharSequence>(Arrays.asList("grøntsag, nigiri, asparges, sesam"))));
+        dishes.add(new Dish("En ret med en meget lang titel som muligvis er over to linjer lang", 48, "/2 stk", "",
+                "Retten har også en beskrivelse som muligvis er en del længere end hvad de fleste er, den indeholder for " +
+                        "eksempel lorem ipsum larum, hvilket ikke nødvendigvis smager godt, men giver en god mundsmag. " +
+                        "Hvad i al verden er det dog jeg skriver i denne beskrivelse? Jeg ved det faktisk ikke selv. " +
+                        "Det har muligvis noget med test at gøre, men dette er heller ikke fuldstændigt defineret i " +
+                        "denne logiske sfære som vi kalder vores bevidsthed. Sushi. Sushi. Sushi. Burger. Ikke burger. " +
+                        "Sushi. Sushiii. Spis sushi. Længere tekster end før. Mundsmag. Hvad? Nej. Noget. Hvem? Hvornår? " +
+                        "Dette er et tankevækkende eksperiement om hvor dumme tekster jeg kan skrive for at teste et program. " +
+                        "Stop...",
+                new ArrayList<CharSequence>(Arrays.asList("grøntsag, nigiri, asparges, sesam"))));
 
 
 
