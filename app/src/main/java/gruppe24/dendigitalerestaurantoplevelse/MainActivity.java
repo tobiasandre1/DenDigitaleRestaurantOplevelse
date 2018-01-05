@@ -14,6 +14,7 @@ import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
+import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
@@ -22,11 +23,11 @@ import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CrashLoggingActivity {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();  // Always call the superclass method first
 
 
