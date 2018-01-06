@@ -6,7 +6,6 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 
 
 import com.roughike.bottombar.BottomBar;
@@ -17,8 +16,8 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenuItemList;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
@@ -56,7 +55,7 @@ public class MainActivity extends CrashLoggingActivity {
         Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
 
         if (tabId == R.id.tab_home) {
-            fragment = new FragHome();
+            fragment = new FragMenuItemList();
             toolbar.setTitle("Home");
         }
         else if (tabId == R.id.tab_menu) {
@@ -76,13 +75,6 @@ public class MainActivity extends CrashLoggingActivity {
             ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
             ft.commit();
         }
-    }
-
-    public void startFoodInfoActivity(CharSequence food){
-        Intent intent = new Intent(this,FragFoodInfo.class);
-        Dish dish = Backend.getInstance().getMenu().getDish(food);
-        intent.putExtra("Food", dish.getName().toString());
-        startActivity(intent);
     }
 
     @Override

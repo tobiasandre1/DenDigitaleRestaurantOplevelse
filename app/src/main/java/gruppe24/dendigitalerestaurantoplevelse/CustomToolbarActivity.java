@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
+import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
 import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 

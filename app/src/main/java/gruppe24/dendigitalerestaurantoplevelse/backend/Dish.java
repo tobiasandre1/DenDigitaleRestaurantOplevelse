@@ -47,11 +47,7 @@ public class Dish{
     public Dish(CharSequence name, double price, CharSequence priceText, String url, CharSequence description, List<CharSequence> tags){
         this.name = name;
         this.price = price;
-
         this.url = url;
-        GetImageAsyncTask net = new GetImageAsyncTask();
-        net.execute(url);
-
         this.description = description;
         this.priceText = priceText;
         this.tags = tags;
@@ -122,7 +118,6 @@ public class Dish{
         @Override
         protected Drawable doInBackground(String... urls) {
             try {
-                System.out.println("No exceptions so far");
                 InputStream stream = (InputStream) new URL(urls[0]).getContent();
                 Drawable result = Drawable.createFromStream(stream, "tag");
                 return result;
@@ -154,6 +149,8 @@ public class Dish{
             return image;
         }
         else{
+            GetImageAsyncTask net = new GetImageAsyncTask();
+            net.execute(url);
             return null;
         }
     }

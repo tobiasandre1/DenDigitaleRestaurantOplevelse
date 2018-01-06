@@ -8,8 +8,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 public interface Search {
 
-    public Menu search(Menu menu, String keyWordsAsSingleString);
-    public Menu search(Menu menu, String... keywords);
-    public Integer valueOf(Dish dish);
+    public Menu search(Menu menu, CharSequence... keywords);
+    public Menu search(Menu menu, boolean favorites, CharSequence... keywords);
 
 }

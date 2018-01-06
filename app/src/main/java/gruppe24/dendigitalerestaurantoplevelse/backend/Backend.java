@@ -1,12 +1,17 @@
 package gruppe24.dendigitalerestaurantoplevelse.backend;
 
+import android.util.Pair;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Pattern;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Search;
@@ -52,29 +57,61 @@ public class Backend implements Search{
         this.menu = menuN;
     }
 
-    public Menu search(Menu menu, String keywordsSingleString){
-        String[] keywords = keywordsSingleString.split(" ");
-        Menu result = search(menu, keywords);
-        return result;
+    public Menu search(Menu menu, CharSequence... keywords){
+        return search(menu, false, keywords);
     }
 
-    public Menu search(Menu menu, String... keywords){
-        Map<Integer, Dish> dishMap = new TreeMap<>(Collections.reverseOrder());
-        //Treemap is a sorted data structure with keys and values, we order it from high to low, setting high value dishes first
+    public Menu search(Menu menu, boolean favorites, CharSequence... keywords){
+        if(keywords.length == 1){
+            keywords = keywords[0].toString().split(" ");
+        }
+
+        String word;
+        for(int i = 0; i<keywords.length; i++){
+            word = keywords[i].toString().toLowerCase();
+            keywords[i] = word;
+        }
+
+        TreeMap<Integer, ArrayList<Dish>> dishMap = new TreeMap<>(Collections.reverseOrder());
 
         int value;
         for(Dish dish : menu.getDishes()){
-            value = valueOf(dish);              //We give the dish a value
-            if(value>0){                        //We determine whether the dish is relevant to the search
-                dishMap.put(value, dish);       //If it is, we add it to the tree
+            value = valueOf(dish, favorites, keywords);                         //We give the dish a value
+            if(value>0){                                                        //We determine whether the dish is relevant to the search
+                ArrayList<Dish> mapDishes = dishMap.get(value);                    //If it is, we add it to the list
+                if(mapDishes == null){
+                    mapDishes = new ArrayList<Dish>();
+                    dishMap.put(value, mapDishes);
+                }
+                mapDishes.add(dish);
             }
+
         }
 
-        Menu result = new MenuArrayList(new ArrayList<Dish>(dishMap.values())); //We make a new List based on the sorted values
+        ArrayList<Dish> dishes = new ArrayList<>();
+        for(ArrayList<Dish> mapDishes : dishMap.values()){
+            dishes.addAll(mapDishes);
+        }
+
+        Menu result = new MenuArrayList(dishes);
+
         return result;
     }
 
-    public Integer valueOf(Dish dish){
-        return 0;
+    private Integer valueOf(Dish dish, boolean favorites, CharSequence... keywords){
+        Integer value = 0;
+
+        ArrayList<CharSequence> title = new ArrayList<CharSequence>(Arrays.asList(dish.getName().toString().split(" ")));
+        for(CharSequence word: keywords){
+            if(dish.getTags().contains(word) || title.contains(word)){
+                value += 1;
+            }
+        }
+
+        if(favorites){
+            //TODO implement when favorites has been implemented
+        }
+
+        return value;
     }
 }

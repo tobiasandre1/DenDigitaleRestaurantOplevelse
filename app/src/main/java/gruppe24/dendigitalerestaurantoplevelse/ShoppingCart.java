@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
+import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 
 
 public class ShoppingCart extends CustomToolbarActivity {
