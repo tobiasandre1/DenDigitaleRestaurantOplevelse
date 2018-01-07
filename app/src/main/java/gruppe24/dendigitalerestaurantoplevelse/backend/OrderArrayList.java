@@ -98,6 +98,7 @@ public class OrderArrayList implements Order {
         return getTotalPrice() + " kr,-";
     }
 
+
     public String[] getItemsAsStrings(){
 
         String[] result = new String[orderItems.size()];
@@ -105,5 +106,9 @@ public class OrderArrayList implements Order {
             result[i] = orderItems.get(i).getAmount() + " stk. " + orderItems.get(i).getDish().getName().toString() + " " + getPrice(i) + " kr,-";
         }
         return result;
+    }
+
+    public List<OrderItem> getItems(){
+        return orderItems;
     }
 }
