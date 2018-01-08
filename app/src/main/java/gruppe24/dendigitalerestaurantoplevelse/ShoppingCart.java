@@ -12,8 +12,10 @@ import java.util.List;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
+
+import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.OrderItem;
+
 
 public class ShoppingCart extends CustomToolbarActivity {
 

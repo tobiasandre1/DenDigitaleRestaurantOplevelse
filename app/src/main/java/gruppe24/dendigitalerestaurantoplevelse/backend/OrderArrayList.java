@@ -45,7 +45,6 @@ public class OrderArrayList implements Order {
     public void remove(Dish dish){
         //TODO test this method
         for(OrderItem i: orderItems){
-            System.out.println("Undersøg om " + i + " = " + dish);
 
             if(i.getDish().equals(dish)){
                 orderItems.remove(i);
