@@ -22,7 +22,7 @@ public class DummyData {
     public ArrayList<Dish> favorites;
     public ArrayList<Dish> dishes;
 
-    public DummyData(){
+    public DummyData() {
         dishes = new ArrayList();
         favorites = new ArrayList();
         //Dummy data
@@ -61,5 +61,6 @@ public class DummyData {
                 new ArrayList<CharSequence>(Arrays.asList("laks", "sashimi"))));
 
     }
+}
 
   

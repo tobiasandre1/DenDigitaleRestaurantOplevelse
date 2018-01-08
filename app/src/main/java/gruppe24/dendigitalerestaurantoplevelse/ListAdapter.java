@@ -23,8 +23,6 @@ import android.widget.Toast;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
 
 public class ListAdapter extends ArrayAdapter<String> {
 
