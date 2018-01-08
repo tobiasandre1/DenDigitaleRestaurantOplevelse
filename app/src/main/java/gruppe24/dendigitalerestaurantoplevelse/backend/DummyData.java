@@ -19,11 +19,12 @@ import gruppe24.dendigitalerestaurantoplevelse.R;
  */
 
 public class DummyData {
+    public ArrayList<Dish> favorites;
     public ArrayList<Dish> dishes;
 
-    public DummyData(){
+    public DummyData() {
         dishes = new ArrayList();
-
+        favorites = new ArrayList();
         //Dummy data
         dishes.add(new Dish("Sashimi laks", 85, "/5 skiver", "http://www.sushi.dk/media/products/T352_10061_SNS.png?ts=1460443673",
                 "Sashimi af laks serveret med soya og wasabi",
@@ -52,7 +53,14 @@ public class DummyData {
                 new ArrayList<CharSequence>(Arrays.asList("grøntsag", "nigiri", "asparges", "sesam"))));
 
 
+        favorites.add(new Dish("Sashimi saba", 59, "/5 skiver", R.drawable.dishpicture_sashimi_saba,
+                "Sashimi af makrel med ingefær og forårsløg serveret med soya og wasabi ",
+                new ArrayList<CharSequence>(Arrays.asList("makrel", "sashimi", "ingefær"))));
+        favorites.add(new Dish("Sashimi laks", 85, "/5 skiver", R.drawable.dishpicture_sashimi_laks,
+                "Sashimi af laks serveret med soya og wasabi",
+                new ArrayList<CharSequence>(Arrays.asList("laks", "sashimi"))));
 
     }
-
 }
+
+  

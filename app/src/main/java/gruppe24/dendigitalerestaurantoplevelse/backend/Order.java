@@ -1,5 +1,7 @@
 package gruppe24.dendigitalerestaurantoplevelse.backend;
 
+import java.util.List;
+
 /**
  * Created by Tobias on 27-11-2017.
  */
@@ -13,5 +15,6 @@ public interface Order {
     public double getTotalPrice();
     public CharSequence getTotalPriceAsText();
     public String[] getItemsAsStrings();
+    public List<OrderItem> getItems();
 
 }
