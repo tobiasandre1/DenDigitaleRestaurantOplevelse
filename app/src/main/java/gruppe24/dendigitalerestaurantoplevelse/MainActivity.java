@@ -77,6 +77,13 @@ public class MainActivity extends CrashLoggingActivity {
         }
     }
 
+    public void startFoodInfoActivity(CharSequence food){
+        Intent intent = new Intent(this,FragFoodInfo.class);
+        Dish dish = Backend.getInstance().getMenu().getDish(food);
+        intent.putExtra("Food", dish.getName().toString());
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();  // Always call the superclass method first
