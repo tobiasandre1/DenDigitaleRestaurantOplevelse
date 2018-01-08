@@ -11,13 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 public class Backend {
     private User user;
     private Menu menu;
-
+    private Personal personal;
     private static Backend instance;
 
 
     private Backend(){
         user = new User();
         menu = new MenuArrayList(new DummyData().dishes);
+        personal = new PersonalArrayList(new DummyData().favorites);
     }
 
     public static synchronized Backend getInstance(){
@@ -39,6 +40,10 @@ public class Backend {
 
     public Menu getMenu() {
         return this.menu;
+    }
+
+    public Personal getPersonal() {
+        return this.personal;
     }
 
     public void setMenu(Menu menuN) {

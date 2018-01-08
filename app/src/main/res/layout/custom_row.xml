@@ -7,7 +7,7 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/itemImageID"
         android:layout_width="214dp"
         android:layout_height="130dp"
