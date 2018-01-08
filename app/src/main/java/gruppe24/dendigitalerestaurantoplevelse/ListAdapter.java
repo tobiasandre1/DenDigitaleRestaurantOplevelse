@@ -40,6 +40,7 @@ public class ListAdapter extends ArrayAdapter<String> {
         LayoutInflater customInflater = LayoutInflater.from(getContext());
         View customView = customInflater.inflate(R.layout.custom_row, parent, false);
 
+        //notifyDataSetChanged();
         CharSequence dishName = getItem(position);
 
         try {
@@ -51,24 +52,16 @@ public class ListAdapter extends ArrayAdapter<String> {
             TextView itemPriceText = (TextView) customView.findViewById(R.id.priceID);
 
             itemText.setText(dish.getName());
-            itemImage.setImageResource(dish.getImage());
+
+            itemImage.setImageDrawable(dish.getImage());
             itemPriceText.setText(dish.getPriceText());
-/*
+          /*
             ImageButton buttonOne = (ImageButton) customView.findViewById(R.id.saveID);
            buttonOne.setOnClickListener(new Button.OnClickListener() {
                 public void onClick(View v) {
             String dish = String.valueOf(parent.getItemAtPosition(position));
-
-
                 }
-
-
-
-
-
-
-            });
-*/
+            });*/
         } catch(NullPointerException e){
             System.out.println("Could not find dish named: " + dishName);
         }

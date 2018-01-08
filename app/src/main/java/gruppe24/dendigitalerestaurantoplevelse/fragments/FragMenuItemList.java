@@ -1,27 +1,35 @@
 package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import gruppe24.dendigitalerestaurantoplevelse.ListAdapter;
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
+import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 
+/**
+ * Created by Tobias Højsgaard on 05-01-2018.
+ */
 
-public class FragHome extends Fragment {
+public class FragMenuItemList extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    private ListAdapter listAdapter;
+    public Runnable newImagesLoaded = new Runnable() {
+        @Override
+        public void run() {
+            listAdapter.notifyDataSetChanged();
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,10 +39,10 @@ public class FragHome extends Fragment {
         // Inflate the layout for this fragment
 
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.listview, container, false);
-
+        Bundle data = getArguments();
 
         String[] dishes = Backend.getInstance().getMenu().getDishesAsStrings();
-        ListAdapter listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
+        listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
 
@@ -49,7 +57,14 @@ public class FragHome extends Fragment {
                     }
                 }
         );
+        Dish.newPicturesLoaded.add(newImagesLoaded);
         return layout;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Dish.newPicturesLoaded.remove(newImagesLoaded);
     }
 
     public void startFoodInfoActivity(CharSequence food){
@@ -67,12 +82,7 @@ public class FragHome extends Fragment {
         Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
         toolbar.setTitle(food);
 
-
-        /*
-        Intent intent = new Intent(getActivity(),FragFoodInfo.class);
-        Dish dish = Backend.getMenu().getDish(food);
-        intent.putExtra("Food", dish.getName().toString());
-        startActivity(intent);*/
     }
+
 
 }

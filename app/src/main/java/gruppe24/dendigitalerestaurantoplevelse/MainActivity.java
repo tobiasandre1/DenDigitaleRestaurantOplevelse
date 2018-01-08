@@ -6,7 +6,6 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 
 
 import com.roughike.bottombar.BottomBar;
@@ -14,19 +13,20 @@ import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
+import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenuItemList;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CrashLoggingActivity {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
 
         if (tabId == R.id.tab_home) {
-            fragment = new FragHome();
+            fragment = new FragMenuItemList();
             toolbar.setTitle("Home");
         }
         else if (tabId == R.id.tab_menu) {
@@ -84,9 +84,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();  // Always call the superclass method first
 
 

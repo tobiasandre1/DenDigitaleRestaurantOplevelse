@@ -78,7 +78,7 @@ public class FragFoodInfo extends android.app.Fragment implements View.OnClickLi
         //TextView title = (TextView) rootView.findViewById(R.id.dishName);
         TextView description = (TextView) rootView.findViewById(R.id.dishDesc);
 
-        image.setImageResource(this.dish.getImage());
+        image.setImageDrawable(this.dish.getImage());
         //title.setText(this.dish.getName());
         description.setText(this.dish.getDescription());
 

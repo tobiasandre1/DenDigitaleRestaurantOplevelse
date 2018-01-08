@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
+import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 
 /**
  * Created by Tobias on 02-11-2017.

@@ -10,12 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
+import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
+import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
 import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 
 //TODO Delete this class once all other classes have been changed to no longer include it
-public class CustomToolbarActivity extends AppCompatActivity{
+public class CustomToolbarActivity extends CrashLoggingActivity{
 
     Backend backend = Backend.getInstance();
     protected Toolbar toolbar;
@@ -50,7 +51,7 @@ public class CustomToolbarActivity extends AppCompatActivity{
     }
 
     @Override
-    public void onResume(){
+    protected void onResume(){
         super.onResume();
         update();
     }
