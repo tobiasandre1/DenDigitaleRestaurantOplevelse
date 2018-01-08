@@ -15,18 +15,24 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <TextView
-            android:id="@+id/title"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Placeholder"
-            android:textColor="@color/colorPrimary" />
+            android:layout_toLeftOf="@id/shoppingcart"
+            android:layout_alignParentLeft="true">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="Placeholder"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/shoppingcart"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="true"
             android:orientation="horizontal"
             android:paddingLeft="10dp"

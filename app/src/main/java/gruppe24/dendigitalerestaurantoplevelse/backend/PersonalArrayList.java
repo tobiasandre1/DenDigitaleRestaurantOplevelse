@@ -1,26 +1,21 @@
 package gruppe24.dendigitalerestaurantoplevelse.backend;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import gruppe24.dendigitalerestaurantoplevelse.R;
-import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
-
 /**
- * Created by Tobias on 02-11-2017.
+ * Created by Mads on 08-01-2018.
  */
 
-public class MenuArrayList implements Menu {
+public class PersonalArrayList implements Personal {
 
     private ArrayList<Dish> dishes;
 
-    public MenuArrayList(){
+    public PersonalArrayList(){
         dishes = new ArrayList<Dish>();
     }
 
-    public MenuArrayList(ArrayList<Dish> d){
+    public PersonalArrayList(ArrayList<Dish> d){
         dishes = d;
     }
 

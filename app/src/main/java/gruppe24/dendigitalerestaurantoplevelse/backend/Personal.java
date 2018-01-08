@@ -3,15 +3,13 @@ package gruppe24.dendigitalerestaurantoplevelse.backend;
 import java.util.List;
 
 /**
- * Created by Tobias on 02-11-2017.
+ * Created by Mads on 08-01-2018.
  */
 
-public interface Menu {
-
+public interface Personal {
     public Dish getDish(CharSequence name);
 
     public List<Dish> getDishes();
 
     public String[] getDishesAsStrings();
-
 }

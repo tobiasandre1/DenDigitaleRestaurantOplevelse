@@ -45,10 +45,12 @@ public class OrderArrayList implements Order {
     public void remove(Dish dish){
         //TODO test this method
         for(OrderItem i: orderItems){
+
             if(i.getDish().equals(dish)){
                 orderItems.remove(i);
+                return;
             }
-            return;
+
         }
     }
 
@@ -95,6 +97,7 @@ public class OrderArrayList implements Order {
         return getTotalPrice() + " kr,-";
     }
 
+
     public String[] getItemsAsStrings(){
 
         String[] result = new String[orderItems.size()];
@@ -102,5 +105,9 @@ public class OrderArrayList implements Order {
             result[i] = orderItems.get(i).getAmount() + " stk. " + orderItems.get(i).getDish().getName().toString() + " " + getPrice(i) + " kr,-";
         }
         return result;
+    }
+
+    public List<OrderItem> getItems(){
+        return orderItems;
     }
 }
