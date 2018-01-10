@@ -21,6 +21,7 @@ import gruppe24.dendigitalerestaurantoplevelse.fragments.ToolbarMain;
 
 public class MainActivity extends CrashLoggingActivity {
 
+    private String currentTab = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,18 +55,22 @@ public class MainActivity extends CrashLoggingActivity {
         if (tabId == R.id.tab_home) {
             fragment = new FragMenuItemList();
             toolbarMain.setTitle(getString(R.string.home));
+            currentTab=getString(R.string.home);
         }
         else if (tabId == R.id.tab_menu) {
             fragment = new FragMenu();
             toolbarMain.setTitle(getString(R.string.menu));
+            currentTab=getString(R.string.menu);
         }
         else if (tabId == R.id.tab_personal) {
             fragment = new FragPersonal();
             toolbarMain.setTitle(getString(R.string.personal));
+            currentTab=getString(R.string.personal);
         }
         else if (tabId == R.id.tab_search) {
             fragment = new FragSearch();
             toolbarMain.setTitle(getString(R.string.search));
+            currentTab=getString(R.string.search);
         }
 
         if(fragment!=null){
@@ -93,13 +98,19 @@ public class MainActivity extends CrashLoggingActivity {
     @Override
     protected void onResume() {
         super.onResume();  // Always call the superclass method first
+        toolbarStuff();
+    }
 
+    @Override
+    public void onBackPressed(){
+        toolbarStuff();
+        super.onBackPressed();
+    }
 
+    private void toolbarStuff(){
         ToolbarMain toolbarMain = (ToolbarMain) getFragmentManager().findFragmentById(R.id.toolbarMain);
+        toolbarMain.setTitle(currentTab);
         toolbarMain.update();
-
-
-        //System.out.println(backend.getMenu().getDishes().get(0).getName());
     }
 
 }

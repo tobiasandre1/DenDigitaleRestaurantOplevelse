@@ -53,12 +53,12 @@ public class ToolbarMain extends Fragment implements View.OnClickListener {
     }
 
     public void setTitle(CharSequence text){
-        if(((AppCompatActivity)getActivity()).getSupportActionBar()!=null) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(text);
-        } else {
+        if(((AppCompatActivity)getActivity()).getSupportActionBar()==null) {
             Toolbar toolbar = (Toolbar) ((AppCompatActivity)getActivity()).findViewById(R.id.uppertoolbar);
             ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         }
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(text);
+
     }
 
     public void update(){
