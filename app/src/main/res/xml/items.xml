@@ -1,19 +1,19 @@
 <tabs>
     <tab
         id="@+id/tab_home"
-        icon="@mipmap/ic_home"
-        title="Home"
+        icon="@drawable/ic_home"
+        title="@string/home"
         />
     <tab
         id="@+id/tab_menu"
-        icon="@mipmap/ic_view_list"
-        title="Menu" />
+        icon="@drawable/ic_view_list"
+        title="@string/menu" />
     <tab
         id="@+id/tab_personal"
-        icon="@mipmap/ic_face"
-        title="Personal" />
+        icon="@drawable/ic_personal"
+        title="@string/personal" />
     <tab
         id="@+id/tab_search"
-        icon="@mipmap/ic_search"
-        title="Search" />
+        icon="@drawable/ic_search"
+        title="@string/search" />
 </tabs>

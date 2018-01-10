@@ -53,19 +53,19 @@ public class MainActivity extends CrashLoggingActivity {
 
         if (tabId == R.id.tab_home) {
             fragment = new FragMenuItemList();
-            toolbarMain.setTitle(getString(R.string.Home));
+            toolbarMain.setTitle(getString(R.string.home));
         }
         else if (tabId == R.id.tab_menu) {
             fragment = new FragMenu();
-            toolbarMain.setTitle(getString(R.string.Menu));
+            toolbarMain.setTitle(getString(R.string.menu));
         }
         else if (tabId == R.id.tab_personal) {
             fragment = new FragPersonal();
-            toolbarMain.setTitle(getString(R.string.Personal));
+            toolbarMain.setTitle(getString(R.string.personal));
         }
         else if (tabId == R.id.tab_search) {
             fragment = new FragSearch();
-            toolbarMain.setTitle(getString(R.string.Search));
+            toolbarMain.setTitle(getString(R.string.search));
         }
 
         if(fragment!=null){
