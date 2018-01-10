@@ -50,8 +50,8 @@ public class FragFoodInfo extends android.app.Fragment implements View.OnClickLi
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if(event.getAction()==KeyEvent.ACTION_DOWN && keyCode==KeyEvent.KEYCODE_ENTER){
                     Backend.getInstance().getUser().getShoppingCart().setAmount(dish, Integer.parseInt(amount.getText().toString()));
-                    Toolbar toolbar = (Toolbar) getFragmentManager().findFragmentById(R.id.toolbar);
-                    toolbar.update();
+                    ToolbarMain toolbarMain = (ToolbarMain) getFragmentManager().findFragmentById(R.id.toolbarMain);
+                    toolbarMain.update();
                     updateExtraButtons();
                     return true;
                 }
@@ -96,8 +96,8 @@ public class FragFoodInfo extends android.app.Fragment implements View.OnClickLi
 
 
         }
-        Toolbar toolbar = (Toolbar) getFragmentManager().findFragmentById(R.id.toolbar);
-        toolbar.update();
+        ToolbarMain toolbarMain = (ToolbarMain) getFragmentManager().findFragmentById(R.id.toolbarMain);
+        toolbarMain.update();
         updateExtraButtons();
     }
 

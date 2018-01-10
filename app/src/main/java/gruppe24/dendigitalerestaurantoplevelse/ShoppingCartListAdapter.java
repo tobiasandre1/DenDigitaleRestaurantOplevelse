@@ -9,12 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.LayoutInflater;
+
 import java.util.List;
 
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.OrderItem;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.Toolbar;
 
 public class ShoppingCartListAdapter extends BaseAdapter {
 
@@ -68,7 +67,7 @@ public class ShoppingCartListAdapter extends BaseAdapter {
 
                 notifyDataSetChanged();
 //                FragmentManager manager = ((Activity) mContext).getFragmentManager();
-//                Toolbar toolbar = (Toolbar) convertView.findViewById(R.id.toolbar);
+//                ToolbarMain toolbar = (ToolbarMain) convertView.findViewById(R.id.toolbar);
 //                toolbar.update();
             }
         });

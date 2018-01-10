@@ -2,8 +2,6 @@ package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -64,7 +62,7 @@ public class FragPersonal extends Fragment {
         ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
         ft.commit();
 
-        Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
-        toolbar.setTitle(food);
+        ToolbarMain toolbarMain = (ToolbarMain) fm.findFragmentById(R.id.toolbarMain);
+        toolbarMain.setTitle(food);
     }
 }

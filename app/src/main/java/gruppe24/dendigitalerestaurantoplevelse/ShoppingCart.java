@@ -1,6 +1,7 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.OrderItem;
 
 
-public class ShoppingCart extends CustomToolbarActivity {
+public class ShoppingCart extends AppCompatActivity {
 
     private ListView lvOrder;
     private ShoppingCartListAdapter adapter;
@@ -29,7 +30,7 @@ public class ShoppingCart extends CustomToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-        super.makeToolbar();
+        //super.makeToolbar();
 
         lvOrder = (ListView)findViewById(R.id.list);
 

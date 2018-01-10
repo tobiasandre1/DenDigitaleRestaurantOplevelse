@@ -2,4 +2,9 @@
     <string name="app_name">DenDigitaleRestaurantOplevelse</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Home">Hjem</string>
+    <string name="Menu">Menu</string>
+    <string name="Personal">Personlig</string>
+    <string name="Search">Søgning</string>
+    <string name="order">Bestil</string>
 </resources>
