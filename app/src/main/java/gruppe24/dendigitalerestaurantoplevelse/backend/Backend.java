@@ -23,14 +23,12 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Search;
 public class Backend implements Search{
     private User user;
     private Menu menu;
-    private Personal personal;
     private static Backend instance;
 
 
     private Backend(){
         user = new User();
         menu = new MenuArrayList(new DummyData().dishes);
-        personal = new PersonalArrayList(new DummyData().favorites);
     }
 
     public static synchronized Backend getInstance(){
@@ -52,10 +50,6 @@ public class Backend implements Search{
 
     public Menu getMenu() {
         return this.menu;
-    }
-
-    public Personal getPersonal() {
-        return this.personal;
     }
 
     public void setMenu(Menu menuN) {

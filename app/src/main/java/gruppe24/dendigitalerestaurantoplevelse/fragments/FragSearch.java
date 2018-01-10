@@ -83,6 +83,8 @@ public class FragSearch extends Fragment {
                 listAdapter.notifyDataSetChanged();
                 return true;
             }
+
+
         });
 
 
