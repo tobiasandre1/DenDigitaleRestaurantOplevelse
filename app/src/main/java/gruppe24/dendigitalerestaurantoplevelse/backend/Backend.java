@@ -106,7 +106,7 @@ public class Backend implements Search{
     private Integer valueOf(Dish dish, boolean favorites, CharSequence... keywords){
         Integer value = 0;
 
-        ArrayList<CharSequence> title = new ArrayList<CharSequence>(Arrays.asList(dish.getName().toString().split(" ")));
+        ArrayList<CharSequence> title = new ArrayList<CharSequence>(Arrays.asList(dish.getName().toString().toLowerCase().split(" ")));
         for(CharSequence word: keywords){
             if(dish.getTags().contains(word) || title.contains(word)){
                 value += 1;

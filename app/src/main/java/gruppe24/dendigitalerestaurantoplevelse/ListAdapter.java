@@ -21,12 +21,15 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 public class ListAdapter extends ArrayAdapter<String> {
 
-    public ListAdapter(Context context, String[] dishes) {
+    public ListAdapter(Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
     }
 
@@ -68,4 +71,5 @@ public class ListAdapter extends ArrayAdapter<String> {
 
         return customView;
     }
+
 }

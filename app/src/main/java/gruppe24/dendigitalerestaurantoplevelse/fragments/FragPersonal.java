@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.util.List;
+
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 
@@ -31,8 +33,8 @@ public class FragPersonal extends Fragment {
 
         LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.listview, container, false);
 
-
-        String[] dishes = Backend.getInstance().getPersonal().getDishesAsStrings();
+        /*
+        List<String> dishes = Backend.getInstance().getPersonal().getDishesAsStrings();
         ListAdapter listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
@@ -47,7 +49,7 @@ public class FragPersonal extends Fragment {
 
                     }
                 }
-        );
+        );*/
         return layout;
     }
 

@@ -77,11 +77,20 @@ public class MainActivity extends CrashLoggingActivity {
         }
     }
 
-    public void startFoodInfoActivity(CharSequence food){
-        Intent intent = new Intent(this,FragFoodInfo.class);
-        Dish dish = Backend.getInstance().getMenu().getDish(food);
-        intent.putExtra("Food", dish.getName().toString());
-        startActivity(intent);
+    public static void startFoodInfoActivity(CharSequence food, FragmentManager fm){
+        Bundle data = new Bundle();
+        data.putString("Food", food.toString());
+
+        Fragment fragment = new FragFoodInfo();
+        fragment.setArguments(data);
+
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
+        ft.commit();
+
+        Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
+        toolbar.setTitle(food);
+
     }
 
     @Override
