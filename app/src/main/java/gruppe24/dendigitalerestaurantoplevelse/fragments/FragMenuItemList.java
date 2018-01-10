@@ -33,7 +33,7 @@ public class FragMenuItemList extends Fragment {
             listAdapter.notifyDataSetChanged();
         }
     };
-    private static Menu specializedMenu;
+    Bundle data;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +43,15 @@ public class FragMenuItemList extends Fragment {
         // Inflate the layout for this fragment
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.listview, container, false);
 
-        List<String> dishes = Backend.getInstance().getMenu().getDishesAsStrings();
+        data = getArguments();
+        List<String> dishes;
+
+        try{
+            dishes = Backend.getInstance().search(Backend.getInstance().getMenu(), data.getString("category")).getDishesAsStrings();
+        } catch (NullPointerException e){
+            dishes = Backend.getInstance().getMenu().getDishesAsStrings();
+        }
+
         listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
