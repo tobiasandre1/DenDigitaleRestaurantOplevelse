@@ -23,14 +23,12 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Search;
 public class Backend implements Search{
     private User user;
     private Menu menu;
-    private Personal personal;
     private static Backend instance;
 
 
     private Backend(){
         user = new User();
         menu = new MenuArrayList(new DummyData().dishes);
-        personal = new PersonalArrayList(new DummyData().favorites);
     }
 
     public static synchronized Backend getInstance(){
@@ -52,10 +50,6 @@ public class Backend implements Search{
 
     public Menu getMenu() {
         return this.menu;
-    }
-
-    public Personal getPersonal() {
-        return this.personal;
     }
 
     public void setMenu(Menu menuN) {
@@ -106,7 +100,7 @@ public class Backend implements Search{
     private Integer valueOf(Dish dish, boolean favorites, CharSequence... keywords){
         Integer value = 0;
 
-        ArrayList<CharSequence> title = new ArrayList<CharSequence>(Arrays.asList(dish.getName().toString().split(" ")));
+        ArrayList<CharSequence> title = new ArrayList<CharSequence>(Arrays.asList(dish.getName().toString().toLowerCase().split(" ")));
         for(CharSequence word: keywords){
             if(dish.getTags().contains(word) || title.contains(word)){
                 value += 1;

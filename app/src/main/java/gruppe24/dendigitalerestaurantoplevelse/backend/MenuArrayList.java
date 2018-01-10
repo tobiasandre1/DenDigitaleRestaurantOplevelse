@@ -42,11 +42,11 @@ public class MenuArrayList implements Menu {
     }
 
     @Override
-    public String[] getDishesAsStrings(){
+    public List<String> getDishesAsStrings(){
         List<Dish> dishes = getDishes();
-        String[] result = new String[dishes.size()];
+        List<String> result = new ArrayList<>();
         for(int i=0; i<dishes.size(); i++){
-            result[i] = dishes.get(i).getName().toString();
+            result.add( dishes.get(i).getName().toString());
         }
         return result;
     }

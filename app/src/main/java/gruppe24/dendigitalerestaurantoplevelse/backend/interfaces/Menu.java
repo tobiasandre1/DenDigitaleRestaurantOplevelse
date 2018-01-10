@@ -14,6 +14,6 @@ public interface Menu {
 
     public List<Dish> getDishes();
 
-    public String[] getDishesAsStrings();
+    public List<String> getDishesAsStrings();
 
 }

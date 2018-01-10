@@ -2,8 +2,6 @@ package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import java.util.List;
 
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
@@ -31,8 +31,7 @@ public class FragPersonal extends Fragment {
 
         LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.listview, container, false);
 
-
-        String[] dishes = Backend.getInstance().getPersonal().getDishesAsStrings();
+        List<String> dishes = Backend.getInstance().getMenu().getDishesAsStrings();
         ListAdapter listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
@@ -63,7 +62,7 @@ public class FragPersonal extends Fragment {
         ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
         ft.commit();
 
-        Toolbar toolbar = (Toolbar) fm.findFragmentById(R.id.toolbar);
-        toolbar.setTitle(food);
+        ToolbarMain toolbarMain = (ToolbarMain) fm.findFragmentById(R.id.toolbarMain);
+        toolbarMain.setTitle(food);
     }
 }
