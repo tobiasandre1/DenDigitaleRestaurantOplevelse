@@ -28,6 +28,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 public class FragSearch extends Fragment {
 
     private ListAdapter listAdapter;
+    private SearchView searchView;
     public Runnable update = new Runnable() {
         @Override
         public void run() {
@@ -67,7 +68,7 @@ public class FragSearch extends Fragment {
                 }
         );
 
-        SearchView searchView = (SearchView) layout.findViewById(R.id.searchView);
+        searchView = (SearchView) layout.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
             public boolean onQueryTextChange(String s) {
@@ -81,6 +82,7 @@ public class FragSearch extends Fragment {
                 dishes.clear();
                 dishes.addAll(specializedMenu.getDishesAsStrings());
                 listAdapter.notifyDataSetChanged();
+                searchView.clearFocus();
                 return true;
             }
 
