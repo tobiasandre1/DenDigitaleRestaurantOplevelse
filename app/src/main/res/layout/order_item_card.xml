@@ -15,9 +15,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="gruppe24.dendigitalerestaurantoplevelse.ShoppingCart"
-        tools:layout_editor_absoluteY="10dp"
-        tools:layout_editor_absoluteX="0dp">
+        tools:context="gruppe24.dendigitalerestaurantoplevelse.ShoppingCart">
 
         <ImageView
             android:id="@+id/order_imgviewID"
@@ -31,7 +29,7 @@
 
         <TextView
             android:id="@+id/order_nameID"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -41,7 +39,6 @@
             android:text="name"
             android:textColor="@color/cardview_light_background"
             android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/order_priceID"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +47,7 @@
             android:id="@+id/order_priceID"
             android:layout_width="54dp"
             android:layout_height="25dp"
-            android:background="@color/transparent"
+            android:background="@color/none"
             android:text="Price"
             android:textColor="@color/cardview_light_background"
             android:textSize="10sp"
@@ -65,7 +62,7 @@
             android:id="@+id/btn_order_removeID"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@mipmap/ic_remove"
+            android:background="@drawable/ic_remove"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="26dp"
