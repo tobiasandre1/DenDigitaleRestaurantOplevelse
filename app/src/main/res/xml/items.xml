@@ -1,12 +1,12 @@
 <tabs>
     <tab
         id="@+id/tab_home"
-        icon="@drawable/ic_home"
+        icon="@drawable/ic_discover"
         title="@string/home"
         />
     <tab
         id="@+id/tab_menu"
-        icon="@drawable/ic_view_list"
+        icon="@drawable/ic_food_icon"
         title="@string/menu" />
     <tab
         id="@+id/tab_personal"
