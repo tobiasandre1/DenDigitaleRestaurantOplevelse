@@ -9,15 +9,6 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="25dp">
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:button="@drawable/custom_chackbox_selector"
-        android:text="CheckBox"
-        tools:layout_editor_absoluteY="93dp"
-        tools:layout_editor_absoluteX="210dp" />
-
     <ImageView
         android:id="@+id/itemImageID"
         android:layout_width="205dp"
@@ -67,15 +58,14 @@
         app:layout_constraintLeft_toRightOf="@+id/itemImageID"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/saveID"
-        style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_width="48dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="0dp"
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginRight="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/itemImageID"
+        android:button="@drawable/custom_chackbox_selector"
         app:layout_constraintRight_toRightOf="@+id/itemImageID"
-        app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/itemImageID"
+        android:layout_marginBottom="0dp" />
 
 </android.support.constraint.ConstraintLayout>
