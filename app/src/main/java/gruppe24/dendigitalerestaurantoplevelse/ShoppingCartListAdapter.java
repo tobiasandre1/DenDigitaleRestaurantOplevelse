@@ -49,14 +49,14 @@ public class ShoppingCartListAdapter extends BaseAdapter {
         View v = View.inflate(mContext, R.layout.order_item_card, null);
         TextView tvOrder_nameID = (TextView)v.findViewById(R.id.order_nameID);
         TextView tvOrder_priceID = (TextView)v.findViewById(R.id.order_priceID);
-        TextView tvOrder_amountID = (TextView)v.findViewById(R.id.order_amountID);
+        //TextView tvOrder_amountID = (TextView)v.findViewById(R.id.order_amountID);
         ImageView ivOrder_imgviewID = (ImageView)v.findViewById((R.id.order_imgviewID));
         final EditText amount = (EditText)v.findViewById(R.id.amountText);
         Button remove = (Button)v.findViewById(R.id.btn_order_removeID);
 
         tvOrder_nameID.setText(mOrderList.get(position).getDish().getName());
-        tvOrder_priceID.setText(String.valueOf("kr. " + mOrderList.get(position).getDish().getPrice()));
-        tvOrder_amountID.setText(String.valueOf(mOrderList.get(position).getAmount())+" stk.");
+        tvOrder_priceID.setText(String.valueOf("kr,- " + mOrderList.get(position).getDish().getPrice()*mOrderList.get(position).getAmount())+"  pr. stk.");
+        //tvOrder_amountID.setText(String.valueOf(mOrderList.get(position).getAmount())+" stk.");
         ivOrder_imgviewID.setImageDrawable(mOrderList.get(position).getDish().getImage());
         amount.setText(String.valueOf(mOrderList.get(position).getAmount()));
 
