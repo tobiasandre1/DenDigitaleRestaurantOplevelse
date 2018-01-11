@@ -86,12 +86,6 @@ public class ShoppingCartListAdapter extends BaseAdapter {
             }
         });
 
-
-
-
-
-
-
         return v;
     }
 }
