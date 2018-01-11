@@ -1,34 +1,26 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 
-import java.util.ArrayList;
 import java.util.List;
-
+import gruppe24.dendigitalerestaurantoplevelse.backend.SharedPreference;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 public class ListAdapter extends ArrayAdapter<String> {
-
+    private Context context;
+    List<Dish> dishes;
+    SharedPreference sharedPreference;
     public ListAdapter(final Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
     }
@@ -66,17 +58,38 @@ public class ListAdapter extends ArrayAdapter<String> {
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
             TextView itemPriceText = (TextView) customView.findViewById(R.id.priceID);
             ImageView addDish = (ImageView) customView.findViewById(R.id.orderID);
+            CheckBox checkBox = (CheckBox) customView.findViewById(R.id.checkBox2);
 
             itemText.setText(dish.getName());
 
             itemImage.setImageDrawable(dish.getImage());
             itemPriceText.setText(dish.getPriceText());
 
+            if (checkFavoriteItem((Dish) dishes)) {
+                checkBox.setChecked(true);
+            } else {
+                checkBox.setChecked(false);
+            }
         } catch(NullPointerException e){
             System.out.println("Could not find dish named: " + dishName);
         }
 
+
         return customView;
+    }
+
+    public boolean checkFavoriteItem(Dish d) {
+        boolean check = false;
+        List<Dish> prefered = sharedPreference.getPreferences(context);
+        if (prefered != null) {
+            for (Dish product : prefered) {
+                if (product.equals(d)) {
+                    check = true;
+                    break;
+                }
+            }
+        }
+        return check;
     }
 
 }
