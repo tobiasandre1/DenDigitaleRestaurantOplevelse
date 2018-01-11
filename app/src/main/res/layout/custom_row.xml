@@ -9,6 +9,15 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="25dp">
 
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/custom_chackbox_selector"
+        android:text="CheckBox"
+        tools:layout_editor_absoluteY="93dp"
+        tools:layout_editor_absoluteX="210dp" />
+
     <ImageView
         android:id="@+id/itemImageID"
         android:layout_width="205dp"
