@@ -21,16 +21,13 @@ public class FragPersonal extends Fragment {
     GridView grid;
     String[] web = {
             "Favoritter",
-            "Filter",
-            "Bestillings-historik"
+            "Bestillings-historik",
 
 
     } ;
     int[] imageId = {
-            R.drawable.sushipicture,
-            R.drawable.ic_menu_icon,
-            R.drawable.dishpicture_sashimi_laks
-
+            R.drawable.ic_fav_checked,
+            R.drawable.ic_order_history
     };
 
     @Override
