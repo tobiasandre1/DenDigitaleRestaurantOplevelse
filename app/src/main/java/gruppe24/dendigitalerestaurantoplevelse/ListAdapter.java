@@ -47,7 +47,7 @@ public class ListAdapter extends ArrayAdapter<String> {
         final Dish currDish = backend.getMenu().getDish(dishName);
 
 
-        Button add = (Button)customView.findViewById(R.id.orderID);
+        ImageView add = (ImageView) customView.findViewById(R.id.orderID);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +65,7 @@ public class ListAdapter extends ArrayAdapter<String> {
             TextView itemText = (TextView) customView.findViewById(R.id.nameID);
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
             TextView itemPriceText = (TextView) customView.findViewById(R.id.priceID);
-            Button addDish = (Button) customView.findViewById(R.id.orderID);
+            ImageView addDish = (ImageView) customView.findViewById(R.id.orderID);
 
             itemText.setText(dish.getName());
 
