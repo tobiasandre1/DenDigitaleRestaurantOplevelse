@@ -55,7 +55,7 @@ public class ShoppingCartListAdapter extends BaseAdapter {
         Button remove = (Button)v.findViewById(R.id.btn_order_removeID);
 
         tvOrder_nameID.setText(mOrderList.get(position).getDish().getName());
-        tvOrder_priceID.setText(String.valueOf("kr,- " + mOrderList.get(position).getDish().getPrice()*mOrderList.get(position).getAmount())+"  pr. stk.");
+        tvOrder_priceID.setText(String.valueOf(mOrderList.get(position).getDish().getPrice()*mOrderList.get(position).getAmount()) + " kr,- ");
         //tvOrder_amountID.setText(String.valueOf(mOrderList.get(position).getAmount())+" stk.");
         ivOrder_imgviewID.setImageDrawable(mOrderList.get(position).getDish().getImage());
         amount.setText(String.valueOf(mOrderList.get(position).getAmount()));
