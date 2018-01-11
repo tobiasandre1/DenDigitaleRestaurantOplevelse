@@ -68,5 +68,18 @@ public class ToolbarMain extends Fragment implements View.OnClickListener {
         Toolbar toolbar = (Toolbar) getView().findViewById(R.id.uppertoolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
     }
+
+    public void displayBackButton(Fragment f){
+        if(((AppCompatActivity)getActivity()).getSupportActionBar()==null) {
+            Toolbar toolbar = (Toolbar) ((AppCompatActivity)getActivity()).findViewById(R.id.uppertoolbar);
+            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        }
+        String fname = f.getClass().getName();
+        if(fname.equals(FragFoodInfo.class.getName())) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } else {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+    }
 }
 

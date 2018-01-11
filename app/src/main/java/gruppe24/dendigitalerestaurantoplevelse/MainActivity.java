@@ -22,6 +22,7 @@ import gruppe24.dendigitalerestaurantoplevelse.fragments.ToolbarMain;
 public class MainActivity extends CrashLoggingActivity {
 
     private String currentTab = "";
+    Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,6 @@ public class MainActivity extends CrashLoggingActivity {
     }
 
     private void selectTab(int tabId){
-        Fragment fragment = null;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ToolbarMain toolbarMain = (ToolbarMain) fm.findFragmentById(R.id.toolbarMain);
@@ -87,11 +87,12 @@ public class MainActivity extends CrashLoggingActivity {
         fragment.setArguments(data);
 
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
+        ft.replace(R.id.frag_place, fragment).addToBackStack("food");
         ft.commit();
 
         ToolbarMain toolbarMain = (ToolbarMain) fm.findFragmentById(R.id.toolbarMain);
         toolbarMain.setTitle(food);
+        toolbarMain.displayBackButton(fragment);
 
     }
 
@@ -111,6 +112,14 @@ public class MainActivity extends CrashLoggingActivity {
         ToolbarMain toolbarMain = (ToolbarMain) getFragmentManager().findFragmentById(R.id.toolbarMain);
         toolbarMain.setTitle(currentTab);
         toolbarMain.update();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        ToolbarMain toolbarMain = (ToolbarMain) getFragmentManager().findFragmentById(R.id.toolbarMain);
+        toolbarMain.displayBackButton(fragment);
+        onBackPressed();
+        return true;
     }
 
 }
