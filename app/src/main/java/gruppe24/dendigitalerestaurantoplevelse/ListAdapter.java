@@ -29,7 +29,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
 public class ListAdapter extends ArrayAdapter<String> {
 
-    public ListAdapter(Context context, List<String> dishes) {
+    public ListAdapter(final Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
     }
 
@@ -43,31 +43,38 @@ public class ListAdapter extends ArrayAdapter<String> {
 
         //notifyDataSetChanged();
         CharSequence dishName = getItem(position);
+        Backend backend = Backend.getInstance();
+        final Dish currDish = backend.getMenu().getDish(dishName);
+
+
+        Button add = (Button)customView.findViewById(R.id.orderID);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Backend.getInstance().getUser().getShoppingCart().add(currDish);
+
+                notifyDataSetChanged();
+            }
+
+        });
 
         try {
-            Backend backend = Backend.getInstance();
+//            Backend backend = Backend.getInstance();
             Dish dish = backend.getMenu().getDish(dishName);
 
             TextView itemText = (TextView) customView.findViewById(R.id.nameID);
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
             TextView itemPriceText = (TextView) customView.findViewById(R.id.priceID);
+            Button addDish = (Button) customView.findViewById(R.id.orderID);
 
             itemText.setText(dish.getName());
 
             itemImage.setImageDrawable(dish.getImage());
             itemPriceText.setText(dish.getPriceText());
-          /*
-            ImageButton buttonOne = (ImageButton) customView.findViewById(R.id.saveID);
-           buttonOne.setOnClickListener(new Button.OnClickListener() {
-                public void onClick(View v) {
-            String dish = String.valueOf(parent.getItemAtPosition(position));
-                }
-            });*/
+
         } catch(NullPointerException e){
             System.out.println("Could not find dish named: " + dishName);
         }
-
-
 
         return customView;
     }
