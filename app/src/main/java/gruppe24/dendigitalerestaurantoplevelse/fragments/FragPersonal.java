@@ -4,21 +4,32 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.widget.GridView;
+import android.widget.Toast;
 
-import java.util.List;
-
+import gruppe24.dendigitalerestaurantoplevelse.CustomGrid;
 import gruppe24.dendigitalerestaurantoplevelse.R;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 
 
 public class FragPersonal extends Fragment {
+
+    GridView grid;
+    String[] web = {
+            "Favoritter",
+            "Bestillings-historik",
+
+
+    } ;
+    int[] imageId = {
+            R.drawable.ic_fav_checked,
+            R.drawable.ic_order_history
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +40,22 @@ public class FragPersonal extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.listview, container, false);
+        ConstraintLayout rootView = (ConstraintLayout) inflater.inflate(R.layout.fragment_fragpersonal, container, false);
 
+        CustomGrid adapter = new CustomGrid(getActivity(), web, imageId);
+        grid = (GridView) rootView.findViewById(R.id.gridview);
+        grid.setAdapter(adapter);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(getActivity(), "You Clicked at " +web[+ position], Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        /*
         List<String> dishes = Backend.getInstance().getMenu().getDishesAsStrings();
         ListAdapter listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
@@ -46,8 +71,8 @@ public class FragPersonal extends Fragment {
 
                     }
                 }
-        );
-        return layout;
+        );*/
+        return rootView;
     }
 
     public void startFoodInfoActivity(CharSequence food) {
