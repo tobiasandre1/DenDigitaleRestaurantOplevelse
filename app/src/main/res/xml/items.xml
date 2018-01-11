@@ -1,18 +1,19 @@
 <tabs>
     <tab
         id="@+id/tab_home"
-        icon="@drawable/ic_home"
-        title="Home"
-        activeColor="@color/colorPrimaryDark"
+        icon="@drawable/ic_discover"
+        title="@string/home"
         />
     <tab
         id="@+id/tab_menu"
-        icon="@drawable/ic_menu_icon"
-        title="Menu"
-        activeColor="@color/colorPrimaryDark" />
+        icon="@drawable/ic_food_icon"
+        title="@string/menu" />
     <tab
         id="@+id/tab_personal"
         icon="@drawable/ic_personal"
-        title="Personal"
-        activeColor="@color/colorPrimaryDark"/>
+        title="@string/personal" />
+    <tab
+        id="@+id/tab_search"
+        icon="@drawable/ic_search"
+        title="@string/search" />
 </tabs>

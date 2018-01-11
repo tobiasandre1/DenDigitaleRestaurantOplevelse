@@ -10,29 +10,40 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar"
+    <fragment
+        android:id="@+id/toolbarMain"
+        android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.ToolbarMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/frag_place"
         android:layout_alignParentStart="true"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="4dp"></include>
+        tools:layout_editor_absoluteY="4dp"></fragment>
 
-    // using a custom toolbar from https://github.com/roughike/BottomBar, due to the inbuilt libary
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorPrimary">
+    </LinearLayout>
+
+    // using a custom toolbarMain from https://github.com/roughike/BottomBar, due to the inbuilt libary
     to constrained
 
     <fragment
         android:id="@+id/frag_place"
         android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.FragTemporary"
         android:layout_width="match_parent"
-        android:layout_height="377dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="300dp"
-        android:layout_weight="1.01" />
+        android:layout_weight="0.7" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorPrimary">
+    </LinearLayout>
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
@@ -42,8 +53,10 @@
         android:layout_alignParentEnd="true"
         app:bb_behavior="underNavbar"
         app:bb_tabXmlResource="@xml/items"
-        tools:layout_editor_absoluteX="573dp"
-        tools:layout_editor_absoluteY="587dp" />
+        app:bb_activeTabColor="@color/colorAccent"
+        app:bb_inActiveTabColor="@color/colorPrimary"
+        app:bb_titleTextAppearance="@android:style/TextAppearance.Small"
+        android:background="@color/colorPrimaryDark"/>
 
 
 </LinearLayout>

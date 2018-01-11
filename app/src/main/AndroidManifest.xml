@@ -16,20 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FoodInfo">
+        <activity android:name=".ShoppingCart"
+            android:theme="@style/ShoppingCartTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ShoppingCart">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e1a7714cc9f9ee05b2b9d2edfa3f90ade9fd3e20" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

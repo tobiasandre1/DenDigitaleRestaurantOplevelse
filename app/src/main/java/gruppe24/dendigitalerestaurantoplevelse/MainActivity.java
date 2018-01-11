@@ -3,73 +3,123 @@ package gruppe24.dendigitalerestaurantoplevelse;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.view.View;
 
 
 import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
-import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
-import gruppe24.dendigitalerestaurantoplevelse.backend.User;
-import gruppe24.dendigitalerestaurantoplevelse.fragments.FragHome;
+import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenuItemList;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
+import gruppe24.dendigitalerestaurantoplevelse.fragments.ToolbarMain;
 
-public class MainActivity extends CustomToolbarActivity {
+public class MainActivity extends CrashLoggingActivity {
 
+    private String currentTab = "";
+    Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Add listeners to the bottom nav bar
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-
+            @Override
             public void onTabSelected(@IdRes int tabId) {
-                Fragment fragment;
-                if (tabId == R.id.tab_home) {
-                    fragment = new FragHome();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.frag_place, fragment);
-                    ft.commit();
-                } else if (tabId == R.id.tab_menu) {
-                    fragment = new FragMenu();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.frag_place, fragment);
-                    ft.commit();
-                } else if (tabId == R.id.tab_personal) {
-                    fragment = new FragPersonal();
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.frag_place, fragment);
-                    ft.commit();
-                }
-
+                selectTab(tabId);
             }
         });
 
-        super.makeToolbar();
+        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
+            @Override
+            public void onTabReSelected(@IdRes int tabId) {
+                selectTab(tabId);
+            }
+        });
 
     }
 
-    public void btnSushi_OnClick(View view) {
-        startFoodInfoActivity("Sashimi laks"); //TODO Replace "Sashimi laks" with data from buttons in arrayadapter
+    private void selectTab(int tabId){
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ToolbarMain toolbarMain = (ToolbarMain) fm.findFragmentById(R.id.toolbarMain);
+
+        if (tabId == R.id.tab_home) {
+            fragment = new FragMenuItemList();
+            toolbarMain.setTitle(getString(R.string.home));
+            currentTab=getString(R.string.home);
+        }
+        else if (tabId == R.id.tab_menu) {
+            fragment = new FragMenu();
+            toolbarMain.setTitle(getString(R.string.menu));
+            currentTab=getString(R.string.menu);
+        }
+        else if (tabId == R.id.tab_personal) {
+            fragment = new FragPersonal();
+            toolbarMain.setTitle(getString(R.string.personal));
+            currentTab=getString(R.string.personal);
+        }
+        else if (tabId == R.id.tab_search) {
+            fragment = new FragSearch();
+            toolbarMain.setTitle(getString(R.string.search));
+            currentTab=getString(R.string.search);
+        }
+
+        if(fragment!=null){
+            ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
+            ft.commit();
+        }
     }
 
-    public void startFoodInfoActivity(CharSequence food){
-        Intent intent = new Intent(this,FoodInfo.class);
-        Dish dish = BackEndController.getMenu().getDish(food);
-        intent.putExtra("Food", dish.getName().toString());
-        startActivity(intent);
+    public static void startFoodInfoActivity(CharSequence food, FragmentManager fm){
+        Bundle data = new Bundle();
+        data.putString("Food", food.toString());
+
+        Fragment fragment = new FragFoodInfo();
+        fragment.setArguments(data);
+
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.frag_place, fragment).addToBackStack("food");
+        ft.commit();
+
+        ToolbarMain toolbarMain = (ToolbarMain) fm.findFragmentById(R.id.toolbarMain);
+        toolbarMain.setTitle(food);
+        toolbarMain.displayBackButton(fragment);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();  // Always call the superclass method first
+        toolbarStuff();
+    }
+
+    @Override
+    public void onBackPressed(){
+        toolbarStuff();
+        super.onBackPressed();
+    }
+
+    private void toolbarStuff(){
+        ToolbarMain toolbarMain = (ToolbarMain) getFragmentManager().findFragmentById(R.id.toolbarMain);
+        toolbarMain.setTitle(currentTab);
+        toolbarMain.update();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        ToolbarMain toolbarMain = (ToolbarMain) getFragmentManager().findFragmentById(R.id.toolbarMain);
+        toolbarMain.displayBackButton(fragment);
+        onBackPressed();
+        return true;
     }
 
 }

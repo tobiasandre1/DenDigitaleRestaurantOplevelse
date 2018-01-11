@@ -7,28 +7,23 @@ package gruppe24.dendigitalerestaurantoplevelse;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
 import android.widget.TextView;
 
-import gruppe24.dendigitalerestaurantoplevelse.backend.BackEndController;
-import gruppe24.dendigitalerestaurantoplevelse.backend.Menu;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
+import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
+import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
 import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 
-public class CustomToolbarActivity extends AppCompatActivity{
+//TODO Delete this class once all other classes have been changed to no longer include it
+public class CustomToolbarActivity extends CrashLoggingActivity{
 
+    Backend backend = Backend.getInstance();
     protected Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if(BackEndController.getUser()==null && BackEndController.getMenu()==null) {
-            Menu menu = new MenuArrayList();
-            User user = new User();
-            BackEndController.initialize(user, menu);
-            ;
-        }
 
         toolbar = (Toolbar) findViewById(R.id.uppertoolbar);
         setSupportActionBar(toolbar);
@@ -52,11 +47,11 @@ public class CustomToolbarActivity extends AppCompatActivity{
 
     protected void update(){
         TextView shop = (TextView) findViewById(R.id.shoppingcart_text);
-        shop.setText(BackEndController.getUser().getShoppingCart().getTotalPriceAsText());
+        shop.setText(backend.getUser().getShoppingCart().getTotalPriceAsText());
     }
 
     @Override
-    public void onResume(){
+    protected void onResume(){
         super.onResume();
         update();
     }
