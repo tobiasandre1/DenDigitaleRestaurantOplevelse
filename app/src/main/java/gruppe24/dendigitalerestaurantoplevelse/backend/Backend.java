@@ -75,7 +75,7 @@ public class Backend implements Search{
 
         int value;
         for(Dish dish : menu.getDishes()){
-            value = valueOf(dish, favorites, keywords);                         //We give the dish a value
+            value = valueOf(dish, favorites, keywords);                         //We give the dish activity value
             if(value>0){                                                        //We determine whether the dish is relevant to the search
                 ArrayList<Dish> mapDishes = dishMap.get(value);                    //If it is, we add it to the list
                 if(mapDishes == null){

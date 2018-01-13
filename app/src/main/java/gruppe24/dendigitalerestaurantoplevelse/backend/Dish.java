@@ -123,7 +123,7 @@ public class Dish{
                 return result;
 
             } catch (MalformedURLException e) {
-                System.out.println("Ho boy, there was a malformed url exception");
+                System.out.println("Ho boy, there was activity malformed url exception");
                 System.out.println(e);
             } catch (IOException e) {
                 System.out.println("Ho boy, there was an IOException madafakker");
