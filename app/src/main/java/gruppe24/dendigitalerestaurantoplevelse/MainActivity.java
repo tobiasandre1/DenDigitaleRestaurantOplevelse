@@ -11,6 +11,8 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import java.util.List;
+
 import gruppe24.dendigitalerestaurantoplevelse.backend.CrashLoggingActivity;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragFoodInfo;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragMenu;
@@ -22,7 +24,13 @@ import gruppe24.dendigitalerestaurantoplevelse.fragments.ToolbarMain;
 public class MainActivity extends CrashLoggingActivity {
 
     private String currentTab = "";
-    Fragment fragment = null;
+    private Fragment fragment = null;
+    public Runnable update = new Runnable() {
+        @Override
+        public void run() {
+            toolbarStuff();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,8 @@ public class MainActivity extends CrashLoggingActivity {
                 selectTab(tabId);
             }
         });
+
+        ListAdapter.observers.add(update);
 
     }
 
@@ -120,6 +130,12 @@ public class MainActivity extends CrashLoggingActivity {
         toolbarMain.displayBackButton(fragment);
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onDestroy(){
+        ListAdapter.observers.remove(update);
+        super.onDestroy();
     }
 
 }
