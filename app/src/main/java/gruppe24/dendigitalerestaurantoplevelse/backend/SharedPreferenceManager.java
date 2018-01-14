@@ -15,7 +15,7 @@ import android.content.SharedPreferences.Editor;
 import com.google.gson.Gson;
 
 
-public class SharedPreference {
+public class SharedPreferenceManager {
 
     public static final String PREFS_NAME = "SushiApp";
     public static final String PREFEREDITEMS = "Preferences";
@@ -30,9 +30,9 @@ public class SharedPreference {
 
         // saves to json object and back in order to be able to save arraylist
         Gson gson = new Gson();
-        String jsonPreferedItems = gson.toJson(preferences);
+        String jsonPreferredItems = gson.toJson(preferences);
 
-        editor.putString(PREFEREDITEMS, jsonPreferedItems);
+        editor.putString(PREFEREDITEMS, jsonPreferredItems);
 
         editor.commit();
     }
@@ -63,13 +63,14 @@ public class SharedPreference {
         if (settings.contains(PREFEREDITEMS)) {
             String jsonPreferedItems = settings.getString(PREFEREDITEMS, null);
             Gson gson = new Gson();
-            Dish[] preferedItems = gson.fromJson(jsonPreferedItems,
+            Dish[] preferredItems = gson.fromJson(jsonPreferedItems,
                     Dish[].class);
 
-            preferences = Arrays.asList(preferedItems);
+            preferences = Arrays.asList(preferredItems);
             preferences = new ArrayList<Dish>(preferences);
-        } else
+        } else {
             return null;
+        }
 
         return (ArrayList<Dish>) preferences;
     }
