@@ -39,10 +39,10 @@ public class MainActivity extends CrashLoggingActivity {
         setContentView(R.layout.activity_main);
 
 
-        String[] array = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+        String[] array = {"alle retter", "peanut-allergi", "mælke-allergi", "ingen stærk mad"};
         MultiSelectionSpinner multiSelectionSpinner = (MultiSelectionSpinner) findViewById(R.id.spinner);
         multiSelectionSpinner.setItems(array);
-        multiSelectionSpinner.setSelection(new int[]{2, 6});
+        //multiSelectionSpinner.setSelection(new int[]{2, 6});
         multiSelectionSpinner.setListener(new MultiSelectionSpinner.OnMultipleItemsSelectedListener() {
             @Override
             public void selectedIndices(List<Integer> indices) {
