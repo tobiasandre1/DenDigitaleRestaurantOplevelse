@@ -29,7 +29,7 @@ public class OrderArrayList implements Order {
     public void reduce(Dish dish){
         //TODO TEST this method
         for(OrderItem i: orderItems){
-            if(i.getDish().equals(dish)){ //This line may be problematic, as we have not made a custom equals method for this class
+            if(i.getDish().equals(dish)){ //This line may be problematic, as we have not made activity custom equals method for this class
                 if(i.getAmount() > 1){
                     i.setAmount(i.getAmount()-1);
                 }
