@@ -26,7 +26,7 @@ public class ListAdapter extends ArrayAdapter<String> {
 
     List<Dish> dishes;
     SharedPreferenceManager sharedPreferenceManager;
-    public ListAdapter(final Context context, List<String> dishes) {
+    public ListAdapter(Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
         this.context = context;
     }
