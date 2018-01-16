@@ -1,5 +1,6 @@
 package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -9,14 +10,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import gruppe24.dendigitalerestaurantoplevelse.ListAdapter;
+import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
+import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
+import gruppe24.dendigitalerestaurantoplevelse.backend.SharedPreferenceManager;
 import gruppe24.dendigitalerestaurantoplevelse.CustomGrid;
 import gruppe24.dendigitalerestaurantoplevelse.R;
 
 
 public class FragPersonal extends Fragment {
+
+    Activity activity;
+    SharedPreferenceManager sharedPreferenceManager;
+    ArrayList<Dish> favorites;
+
 
     GridView grid;
     String[] web = {
@@ -33,6 +47,8 @@ public class FragPersonal extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity = getActivity();
+
     }
 
     @Override
@@ -41,6 +57,8 @@ public class FragPersonal extends Fragment {
         // Inflate the layout for this fragment
 
         ConstraintLayout rootView = (ConstraintLayout) inflater.inflate(R.layout.fragment_fragpersonal, container, false);
+        sharedPreferenceManager = new SharedPreferenceManager();
+        favorites = sharedPreferenceManager.getPreferences(activity);
 
         CustomGrid adapter = new CustomGrid(getActivity(), web, imageId);
         grid = (GridView) rootView.findViewById(R.id.gridview);
@@ -74,6 +92,7 @@ public class FragPersonal extends Fragment {
         );*/
         return rootView;
     }
+
 
     public void startFoodInfoActivity(CharSequence food) {
         Bundle data = new Bundle();
