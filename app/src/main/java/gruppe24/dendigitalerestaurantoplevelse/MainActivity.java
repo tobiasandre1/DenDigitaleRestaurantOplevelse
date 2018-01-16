@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 
 
+import com.guna.libmultispinner.MultiSelectionSpinner;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -21,7 +22,7 @@ import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.ToolbarMain;
 
-public class MainActivity extends CrashLoggingActivity {
+public abstract class MainActivity extends CrashLoggingActivity implements MultiSelectionSpinner.OnMultipleItemsSelectedListener {
 
     private String currentTab = "";
     private Fragment fragment = null;
@@ -37,6 +38,11 @@ public class MainActivity extends CrashLoggingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String[] array = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+        MultiSelectionSpinner multiSelectionSpinner = (MultiSelectionSpinner) findViewById(R.id.spinner);
+        multiSelectionSpinner.setItems(array);
+        multiSelectionSpinner.setSelection(new int[]{2, 6});
+        multiSelectionSpinner.setListener(this);
         //Add listeners to the bottom nav bar
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
