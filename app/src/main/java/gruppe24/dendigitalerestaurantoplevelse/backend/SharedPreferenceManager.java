@@ -15,7 +15,7 @@ import android.content.SharedPreferences.Editor;
 import com.google.gson.Gson;
 
 
-public class SharedPreference {
+public class SharedPreferenceManager {
 
     public static final String PREFS_NAME = "SushiApp";
     public static final String PREFEREDITEMS = "Preferences";
@@ -37,18 +37,18 @@ public class SharedPreference {
         editor.commit();
     }
 
-    public void addToPreferences(Context context, Dish product) {
+    public void addToPreferences(Context context, Dish dish) {
         List<Dish> preferences = getPreferences(context);
         if (preferences == null)
             preferences = new ArrayList<Dish>();
-        preferences.add(product);
+        preferences.add(dish);
         saveToPreferences(context, preferences);
     }
 
-    public void removePreference(Context context, Dish product) {
+    public void removePreference(Context context, Dish dish) {
         ArrayList<Dish> preferences = getPreferences(context);
         if (preferences != null) {
-            preferences.remove(product);
+            preferences.remove(dish);
             saveToPreferences(context, preferences);
         }
     }
@@ -73,4 +73,6 @@ public class SharedPreference {
 
         return (ArrayList<Dish>) preferences;
     }
+
+
 }

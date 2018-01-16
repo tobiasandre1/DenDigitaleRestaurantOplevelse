@@ -1,5 +1,6 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,14 +14,15 @@ import android.widget.TextView;
 
 
 import java.util.List;
-import gruppe24.dendigitalerestaurantoplevelse.backend.SharedPreference;
+import gruppe24.dendigitalerestaurantoplevelse.backend.SharedPreferenceManager;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
-public class ListAdapter extends ArrayAdapter<String> {
-    private Context context;
+public class    ListAdapter extends ArrayAdapter<String> {
+    Context context;
+
     List<Dish> dishes;
-    SharedPreference sharedPreference;
+    SharedPreferenceManager sharedPreferenceManager;
     public ListAdapter(final Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
     }
@@ -38,7 +40,6 @@ public class ListAdapter extends ArrayAdapter<String> {
         Backend backend = Backend.getInstance();
         final Dish currDish = backend.getMenu().getDish(dishName);
 
-
         ImageView add = (ImageView) customView.findViewById(R.id.orderID);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +50,10 @@ public class ListAdapter extends ArrayAdapter<String> {
             }
 
         });
-
         try {
 //            Backend backend = Backend.getInstance();
             Dish dish = backend.getMenu().getDish(dishName);
+            final Dish dishToAdd = backend.getMenu().getDish(dishName);
 
             TextView itemText = (TextView) customView.findViewById(R.id.nameID);
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
@@ -61,9 +62,22 @@ public class ListAdapter extends ArrayAdapter<String> {
             CheckBox checkBox = (CheckBox) customView.findViewById(R.id.checkBox2);
 
             itemText.setText(dish.getName());
-
             itemImage.setImageDrawable(dish.getImage());
             itemPriceText.setText(dish.getPriceText());
+
+            final CheckBox check = checkBox;
+
+            checkBox.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    if (check.isChecked()) {
+                        sharedPreferenceManager.addToPreferences(context, dishToAdd);
+                    } else {
+                        sharedPreferenceManager.removePreference(context, dishToAdd);
+                    }
+                }
+            });
 
             if (checkFavoriteItem((Dish) dishes)) {
                 checkBox.setChecked(true);
@@ -80,10 +94,10 @@ public class ListAdapter extends ArrayAdapter<String> {
 
     public boolean checkFavoriteItem(Dish d) {
         boolean check = false;
-        List<Dish> prefered = sharedPreference.getPreferences(context);
+        List<Dish> prefered = sharedPreferenceManager.getPreferences(context);
         if (prefered != null) {
-            for (Dish product : prefered) {
-                if (product.equals(d)) {
+            for (Dish dish : prefered) {
+                if (dish.equals(d)) {
                     check = true;
                     break;
                 }
