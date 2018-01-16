@@ -19,6 +19,7 @@ public class ToolbarActions implements View.OnClickListener{
 
     public void onClick(View v){
 
+
         System.out.println("Inclick");
         if(v.getId() == ((Activity) context).findViewById(R.id.shoppingcart).getId()){
             ((Activity)context).startActivity(new Intent((Activity)context, ShoppingCart.class));

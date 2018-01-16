@@ -49,18 +49,15 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"/>
 
+            <com.guna.libmultispinner.MultiSelectionSpinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
+            </com.guna.libmultispinner.MultiSelectionSpinner>
         </LinearLayout>
 
 
-        <com.guna.libmultispinner.MultiSelectionSpinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-        </com.guna.libmultispinner.MultiSelectionSpinner>
     </android.support.v7.widget.Toolbar>
-
-
 
 </RelativeLayout>
