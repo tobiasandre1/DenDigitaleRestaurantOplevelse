@@ -22,7 +22,7 @@ import gruppe24.dendigitalerestaurantoplevelse.fragments.FragPersonal;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.FragSearch;
 import gruppe24.dendigitalerestaurantoplevelse.fragments.ToolbarMain;
 
-public abstract class MainActivity extends CrashLoggingActivity implements MultiSelectionSpinner.OnMultipleItemsSelectedListener {
+public class MainActivity extends CrashLoggingActivity {
 
     private String currentTab = "";
     private Fragment fragment = null;
@@ -38,11 +38,24 @@ public abstract class MainActivity extends CrashLoggingActivity implements Multi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         String[] array = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
         MultiSelectionSpinner multiSelectionSpinner = (MultiSelectionSpinner) findViewById(R.id.spinner);
         multiSelectionSpinner.setItems(array);
         multiSelectionSpinner.setSelection(new int[]{2, 6});
-        multiSelectionSpinner.setListener(this);
+        multiSelectionSpinner.setListener(new MultiSelectionSpinner.OnMultipleItemsSelectedListener() {
+            @Override
+            public void selectedIndices(List<Integer> indices) {
+
+            }
+
+            @Override
+            public void selectedStrings(List<String> strings) {
+
+            }
+        });
+
+
         //Add listeners to the bottom nav bar
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {

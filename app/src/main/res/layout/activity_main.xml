@@ -26,8 +26,8 @@
         android:background="@color/colorPrimary">
     </LinearLayout>
 
-    // using a custom toolbarMain from https://github.com/roughike/BottomBar, due to the inbuilt libary
-    to constrained
+    <!-- using a custom toolbarMain from https://github.com/roughike/BottomBar, due to the inbuilt libary
+    to constrained-->
 
     <fragment
         android:id="@+id/frag_place"

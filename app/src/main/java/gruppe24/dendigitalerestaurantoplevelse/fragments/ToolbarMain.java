@@ -20,7 +20,7 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
  * Created by Tobias on 02-01-2018.
  */
 
-public abstract class ToolbarMain extends Fragment implements View.OnClickListener{
+public class ToolbarMain extends Fragment implements View.OnClickListener{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
