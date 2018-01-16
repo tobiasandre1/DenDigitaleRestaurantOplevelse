@@ -30,9 +30,10 @@ public class SharedPreferenceManager {
 
         // saves to json object and back in order to be able to save arraylist
         Gson gson = new Gson();
-        String jsonPreferedItems = gson.toJson(preferences);
 
-        editor.putString(PREFEREDITEMS, jsonPreferedItems);
+        String jsonPreferredItems = gson.toJson(preferences);
+        editor.putString(PREFEREDITEMS, jsonPreferredItems);
+
 
         editor.commit();
     }
@@ -49,6 +50,7 @@ public class SharedPreferenceManager {
         ArrayList<Dish> preferences = getPreferences(context);
         if (preferences != null) {
             preferences.remove(dish);
+
             saveToPreferences(context, preferences);
         }
     }
@@ -63,16 +65,17 @@ public class SharedPreferenceManager {
         if (settings.contains(PREFEREDITEMS)) {
             String jsonPreferedItems = settings.getString(PREFEREDITEMS, null);
             Gson gson = new Gson();
-            Dish[] preferedItems = gson.fromJson(jsonPreferedItems,
+
+            Dish[] preferredItems = gson.fromJson(jsonPreferedItems,
                     Dish[].class);
 
-            preferences = Arrays.asList(preferedItems);
+            preferences = Arrays.asList(preferredItems);
             preferences = new ArrayList<Dish>(preferences);
-        } else
+        } else {
             return null;
+        }
 
         return (ArrayList<Dish>) preferences;
     }
-
 
 }
