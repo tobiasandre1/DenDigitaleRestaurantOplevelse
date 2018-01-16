@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gruppe24.dendigitalerestaurantoplevelse.MainActivity"
-    tools:layout_editor_absoluteY="25dp"
-    tools:layout_editor_absoluteX="0dp"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:orientation="vertical">
 
     <fragment
         android:id="@+id/toolbarMain"
@@ -36,7 +33,7 @@
     <fragment
         android:id="@+id/frag_place"
         android:name="gruppe24.dendigitalerestaurantoplevelse.fragments.FragTemporary"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/toolbarMain"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
