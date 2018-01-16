@@ -13,7 +13,9 @@
         android:background="@color/colorPrimaryDark"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/shoppingcart"
@@ -24,6 +26,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_gravity="right">
+
+
 
             <TextView
                 android:id="@+id/shoppingcart_text"
@@ -45,9 +49,16 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"/>
 
+
         </LinearLayout>
 
 
+        <com.guna.libmultispinner.MultiSelectionSpinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+        </com.guna.libmultispinner.MultiSelectionSpinner>
     </android.support.v7.widget.Toolbar>
 
 

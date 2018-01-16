@@ -2,6 +2,7 @@ package gruppe24.dendigitalerestaurantoplevelse;
 
 import android.app.Activity;
 import android.content.Context;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,20 +12,25 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import gruppe24.dendigitalerestaurantoplevelse.backend.SharedPreferenceManager;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
 
-public class    ListAdapter extends ArrayAdapter<String> {
-    Context context;
+
+public class ListAdapter extends ArrayAdapter<String> {
+    private Context context;
+    public static ArrayList<Runnable> observers = new ArrayList<>();
 
     List<Dish> dishes;
     SharedPreferenceManager sharedPreferenceManager;
     public ListAdapter(final Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
+        this.context = context;
     }
 
 
@@ -45,8 +51,13 @@ public class    ListAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View view) {
                 Backend.getInstance().getUser().getShoppingCart().add(currDish);
-
-                notifyDataSetChanged();
+                try{
+                    Toast.makeText(context, currDish.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+                } catch (NullPointerException e){
+                    System.out.println("Activity is null, cannot make toast");
+                }
+                notifyObservers();
+                //notifyDataSetChanged();
             }
 
         });
@@ -104,6 +115,12 @@ public class    ListAdapter extends ArrayAdapter<String> {
             }
         }
         return check;
+    }
+
+    private void notifyObservers(){
+        for(Runnable obs: observers){
+            obs.run();
+        }
     }
 
 }

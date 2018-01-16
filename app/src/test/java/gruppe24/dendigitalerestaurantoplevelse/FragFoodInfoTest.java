@@ -10,6 +10,6 @@ import static org.junit.Assert.*;
 public class FragFoodInfoTest {
     @Test
     public void assertDataIsCorrect(){
-        //TODO make a test
+        //TODO make activity test
     }
 }

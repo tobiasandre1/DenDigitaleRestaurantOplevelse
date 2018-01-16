@@ -1,8 +1,7 @@
 package gruppe24.dendigitalerestaurantoplevelse.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,6 @@ import gruppe24.dendigitalerestaurantoplevelse.MainActivity;
 import gruppe24.dendigitalerestaurantoplevelse.R;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
-import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 
 /**
  * Created by Tobias Højsgaard on 05-01-2018.
@@ -34,12 +32,14 @@ public class FragMenuItemList extends Fragment {
         }
     };
     Bundle data;
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
+        context = getActivity();
         // Inflate the layout for this fragment
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.listview, container, false);
 
@@ -52,7 +52,7 @@ public class FragMenuItemList extends Fragment {
             dishes = Backend.getInstance().getMenu().getDishesAsStrings();
         }
 
-        listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(getActivity(), dishes);
+        listAdapter = new gruppe24.dendigitalerestaurantoplevelse.ListAdapter(context, dishes);
         ListView listViewID = (ListView) layout.findViewById(R.id.listViewID);
         listViewID.setAdapter(listAdapter);
 
