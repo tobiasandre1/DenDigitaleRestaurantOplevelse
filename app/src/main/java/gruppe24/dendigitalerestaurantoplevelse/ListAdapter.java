@@ -26,7 +26,6 @@ public class ListAdapter extends ArrayAdapter<String> {
     public static ArrayList<Runnable> observers = new ArrayList<>();
 
     List<Dish> dishes;
-    SharedPreferenceManager sharedPreferenceManager;
 
     public ListAdapter(Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
@@ -82,11 +81,17 @@ public class ListAdapter extends ArrayAdapter<String> {
 
                 @Override
                 public void onClick(View v) {
-                    if (check.isChecked()) {
-                        sharedPreferenceManager.addToPreferences(context, dishToAdd);
-                    } else {
-                        sharedPreferenceManager.removePreference(context, dishToAdd);
-                    }
+                    /* Code gives transactiontoolargeexception. Have not found solution
+                     * Surrounding in try-catch did not fix
+                    try {
+                        if (check.isChecked()) {
+                            Backend.getInstance().getUser().getSharedPreferenceManager().addToPreferences(context, dishToAdd);
+                        } else {
+                            Backend.getInstance().getUser().getSharedPreferenceManager().removePreference(context, dishToAdd);
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }*/
                 }
             });
 
@@ -106,14 +111,18 @@ public class ListAdapter extends ArrayAdapter<String> {
     public boolean checkFavoriteItem(Dish d) {
         boolean check = false;
 
-        List<Dish> preferred = sharedPreferenceManager.getPreferences(context);
-        if (preferred != null) {
-            for (Dish dish : preferred) {
-                if (dish.equals(d)) {
-                    check = true;
-                    break;
+        try {
+            List<Dish> preferred = Backend.getInstance().getUser().getSharedPreferenceManager().getPreferences(context);
+            if (preferred != null) {
+                for (Dish dish : preferred) {
+                    if (dish.equals(d)) {
+                        check = true;
+                        break;
+                    }
                 }
             }
+        } catch(Exception e){
+            e.printStackTrace();
         }
         return check;
     }
