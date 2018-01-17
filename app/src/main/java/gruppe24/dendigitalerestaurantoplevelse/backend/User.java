@@ -11,10 +11,12 @@ public class User {
 
     Order shoppingCart;
     List<CharSequence> favorites;
+    SharedPreferenceManager sharedPreferenceManager;
 
     public User(){
         shoppingCart = new OrderArrayList();
         favorites = new ArrayList<>();
+        sharedPreferenceManager = new SharedPreferenceManager();
     }
 
     ///Getters and setters
@@ -34,4 +36,9 @@ public class User {
     public void setFavorites(List<CharSequence> favorites) {
         this.favorites = favorites;
     }
+
+    public SharedPreferenceManager getSharedPreferenceManager() {
+        return sharedPreferenceManager;
+    }
+
 }

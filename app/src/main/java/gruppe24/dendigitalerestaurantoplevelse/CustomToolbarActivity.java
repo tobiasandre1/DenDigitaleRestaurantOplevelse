@@ -15,8 +15,10 @@ import gruppe24.dendigitalerestaurantoplevelse.backend.interfaces.Menu;
 import gruppe24.dendigitalerestaurantoplevelse.backend.MenuArrayList;
 import gruppe24.dendigitalerestaurantoplevelse.backend.User;
 
+import com.guna.libmultispinner.MultiSelectionSpinner;
+
 //TODO Delete this class once all other classes have been changed to no longer include it
-public class CustomToolbarActivity extends CrashLoggingActivity{
+public abstract class CustomToolbarActivity extends CrashLoggingActivity implements MultiSelectionSpinner.OnMultipleItemsSelectedListener {
 
     Backend backend = Backend.getInstance();
     protected Toolbar toolbar;
@@ -24,16 +26,11 @@ public class CustomToolbarActivity extends CrashLoggingActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.toolbar_home);
         toolbar = (Toolbar) findViewById(R.id.uppertoolbar);
         setSupportActionBar(toolbar);
 
-        //toolbar.getId();
-
-        //findViewById(R.id.shoppingcart).setOnClickListener(new ToolbarActions(this.getApplicationContext()));
-
     }
-
     protected void makeToolbar(){
         addClickListeners();
         update();

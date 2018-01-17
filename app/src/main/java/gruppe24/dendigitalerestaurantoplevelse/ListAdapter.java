@@ -1,7 +1,7 @@
 package gruppe24.dendigitalerestaurantoplevelse;
 
+import android.app.Activity;
 import android.content.Context;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,18 +16,18 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import gruppe24.dendigitalerestaurantoplevelse.backend.SharedPreference;
+import gruppe24.dendigitalerestaurantoplevelse.backend.SharedPreferenceManager;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Backend;
 import gruppe24.dendigitalerestaurantoplevelse.backend.Dish;
+
 
 public class ListAdapter extends ArrayAdapter<String> {
     private Context context;
     public static ArrayList<Runnable> observers = new ArrayList<>();
 
-
     List<Dish> dishes;
-    SharedPreference sharedPreference;
-    public ListAdapter(final Context context, List<String> dishes) {
+
+    public ListAdapter(Context context, List<String> dishes) {
         super(context, R.layout.custom_row, dishes);
         this.context = context;
     }
@@ -45,7 +45,6 @@ public class ListAdapter extends ArrayAdapter<String> {
         Backend backend = Backend.getInstance();
         final Dish currDish = backend.getMenu().getDish(dishName);
 
-
         ImageView add = (ImageView) customView.findViewById(R.id.orderID);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +60,10 @@ public class ListAdapter extends ArrayAdapter<String> {
             }
 
         });
-
         try {
 //            Backend backend = Backend.getInstance();
             Dish dish = backend.getMenu().getDish(dishName);
+            final Dish dishToAdd = backend.getMenu().getDish(dishName);
 
             TextView itemText = (TextView) customView.findViewById(R.id.nameID);
             ImageView itemImage = (ImageView) customView.findViewById(R.id.itemImageID);
@@ -73,9 +72,28 @@ public class ListAdapter extends ArrayAdapter<String> {
             CheckBox checkBox = (CheckBox) customView.findViewById(R.id.checkBox2);
 
             itemText.setText(dish.getName());
-
             itemImage.setImageDrawable(dish.getImage());
             itemPriceText.setText(dish.getPriceText());
+
+            final CheckBox check = checkBox;
+
+            checkBox.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    /* Code gives transactiontoolargeexception. Have not found solution
+                     * Surrounding in try-catch did not fix
+                    try {
+                        if (check.isChecked()) {
+                            Backend.getInstance().getUser().getSharedPreferenceManager().addToPreferences(context, dishToAdd);
+                        } else {
+                            Backend.getInstance().getUser().getSharedPreferenceManager().removePreference(context, dishToAdd);
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }*/
+                }
+            });
 
             if (checkFavoriteItem((Dish) dishes)) {
                 checkBox.setChecked(true);
@@ -92,14 +110,19 @@ public class ListAdapter extends ArrayAdapter<String> {
 
     public boolean checkFavoriteItem(Dish d) {
         boolean check = false;
-        List<Dish> prefered = sharedPreference.getPreferences(context);
-        if (prefered != null) {
-            for (Dish product : prefered) {
-                if (product.equals(d)) {
-                    check = true;
-                    break;
+
+        try {
+            List<Dish> preferred = Backend.getInstance().getUser().getSharedPreferenceManager().getPreferences(context);
+            if (preferred != null) {
+                for (Dish dish : preferred) {
+                    if (dish.equals(d)) {
+                        check = true;
+                        break;
+                    }
                 }
             }
+        } catch(Exception e){
+            e.printStackTrace();
         }
         return check;
     }
