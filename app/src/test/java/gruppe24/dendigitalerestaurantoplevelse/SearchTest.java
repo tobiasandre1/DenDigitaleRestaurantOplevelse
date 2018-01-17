@@ -27,7 +27,7 @@ public class SearchTest {
 
     @Test
     public void test_search2() throws Exception{
-        Menu result = Backend.getInstance().search(Backend.getInstance().getMenu(), "broccoli");
+        Menu result = Backend.getInstance().search(Backend.getInstance().getMenu(), "grøntsag");
         for(String s: result.getDishesAsStrings()){
             System.out.println(s);
         }
