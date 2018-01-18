@@ -93,20 +93,4 @@ public class FragPersonal extends Fragment {
         return rootView;
     }
 
-
-    public void startFoodInfoActivity(CharSequence food) {
-        Bundle data = new Bundle();
-        data.putString("Food", food.toString());
-
-        Fragment fragment = new FragFoodInfo();
-        fragment.setArguments(data);
-
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frag_place, fragment).addToBackStack("tag");
-        ft.commit();
-
-        ToolbarMain toolbarMain = (ToolbarMain) fm.findFragmentById(R.id.toolbarMain);
-        toolbarMain.setTitle(food);
-    }
 }
